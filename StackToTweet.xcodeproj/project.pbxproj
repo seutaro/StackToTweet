@@ -101,8 +101,9 @@
 			children = (
 				EA7165B2254EBDB100448F1C /* AppDelegate.swift */,
 				EA7165B4254EBDB100448F1C /* SceneDelegate.swift */,
-				EA7165B6254EBDB100448F1C /* ViewController.swift */,
-				EA7165B8254EBDB100448F1C /* Main.storyboard */,
+				EA7165E5255024A200448F1C /* Model */,
+				EA7165E6255024B400448F1C /* View */,
+				EA7165E7255024C200448F1C /* Controller */,
 				EA7165BB254EBDB200448F1C /* Assets.xcassets */,
 				EA7165BD254EBDB200448F1C /* LaunchScreen.storyboard */,
 				EA7165C0254EBDB200448F1C /* Info.plist */,
@@ -126,6 +127,29 @@
 				EA7165D6254EBDB200448F1C /* Info.plist */,
 			);
 			path = StackToTweetUITests;
+			sourceTree = "<group>";
+		};
+		EA7165E5255024A200448F1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA7165E6255024B400448F1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA7165B8254EBDB100448F1C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EA7165E7255024C200448F1C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA7165B6254EBDB100448F1C /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
