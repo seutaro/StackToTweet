@@ -18,6 +18,7 @@
 		EA7165D5254EBDB200448F1C /* StackToTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */; };
 		EAAE8A712557033C007D85E0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE8A702557033C007D85E0 /* Category.swift */; };
 		EAAE8A7D25570396007D85E0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE8A7C25570396007D85E0 /* Item.swift */; };
+		EAAE8A91255706F3007D85E0 /* ReusableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE8A90255706F3007D85E0 /* ReusableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		EA7165D6254EBDB200448F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAE8A702557033C007D85E0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EAAE8A7C25570396007D85E0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EAAE8A90255706F3007D85E0 /* ReusableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				EA7165B6254EBDB100448F1C /* ViewController.swift */,
+				EAAE8A90255706F3007D85E0 /* ReusableTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				EA7165B7254EBDB100448F1C /* ViewController.swift in Sources */,
 				EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
+				EAAE8A91255706F3007D85E0 /* ReusableTableViewController.swift in Sources */,
 				EAAE8A712557033C007D85E0 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -521,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
