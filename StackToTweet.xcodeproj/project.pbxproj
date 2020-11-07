@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7165BD254EBDB200448F1C /* LaunchScreen.storyboard */; };
 		EA7165CA254EBDB200448F1C /* StackToTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165C9254EBDB200448F1C /* StackToTweetTests.swift */; };
 		EA7165D5254EBDB200448F1C /* StackToTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */; };
+		EAAE8A712557033C007D85E0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE8A702557033C007D85E0 /* Category.swift */; };
+		EAAE8A7D25570396007D85E0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAE8A7C25570396007D85E0 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		EA7165D0254EBDB200448F1C /* StackToTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackToTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackToTweetUITests.swift; sourceTree = "<group>"; };
 		EA7165D6254EBDB200448F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAAE8A702557033C007D85E0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		EAAE8A7C25570396007D85E0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +120,7 @@
 			children = (
 				EA7165B2254EBDB100448F1C /* AppDelegate.swift */,
 				EA7165B4254EBDB100448F1C /* SceneDelegate.swift */,
-				EA7165E5255024A200448F1C /* Model */,
+				EAAE8A8125570430007D85E0 /* Model */,
 				EA7165E6255024B400448F1C /* View */,
 				EA7165E7255024C200448F1C /* Controller */,
 				EA7165BB254EBDB200448F1C /* Assets.xcassets */,
@@ -144,13 +148,6 @@
 			path = StackToTweetUITests;
 			sourceTree = "<group>";
 		};
-		EA7165E5255024A200448F1C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		EA7165E6255024B400448F1C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,13 +164,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		EAAE8A8125570430007D85E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAAE8A7C25570396007D85E0 /* Item.swift */,
+				EAAE8A702557033C007D85E0 /* Category.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FF07AE552F91287E9A3AAF42 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				7C98864E5D6DB181629682FB /* Pods-StackToTweet.debug.xcconfig */,
 				BBFAD70CCB60EB95356DAE0A /* Pods-StackToTweet.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -351,9 +356,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAAE8A7D25570396007D85E0 /* Item.swift in Sources */,
 				EA7165B7254EBDB100448F1C /* ViewController.swift in Sources */,
 				EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
+				EAAE8A712557033C007D85E0 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
