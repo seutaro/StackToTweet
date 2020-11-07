@@ -1,0 +1,26 @@
+PODS:
+  - Parchment (2.4.0)
+  - Realm (10.1.2):
+    - Realm/Headers (= 10.1.2)
+  - Realm/Headers (10.1.2)
+  - RealmSwift (10.1.2):
+    - Realm (= 10.1.2)
+
+DEPENDENCIES:
+  - Parchment
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - Parchment
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Parchment: 002785473861582385db5c6725165353c500198e
+  Realm: 031fdd4be7094d01b43af1a5e49766ab644bb800
+  RealmSwift: 43cf2e114baa9d17d34eb81e7d0def31f21cd444
+
+PODFILE CHECKSUM: 98279197bbefed68e1287d7b302f4d0a41ccff8d
+
+COCOAPODS: 1.10.0
