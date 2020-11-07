@@ -7,5 +7,6 @@ target 'StackToTweet' do
 
   # Pods for StackToTweet
 pod 'Parchment'
+pod 'RealmSwift'
 
 end
