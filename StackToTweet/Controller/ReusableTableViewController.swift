@@ -14,9 +14,15 @@ class ReusableTableViewController: UITableViewController {
     var Items: Results<Item>?
     var category:Category? {
         didSet {
-            //ここにItemをロードする関数
+            loadItems()
         }
     }
+    
+    func loadItems() {
+        Items = category?.items.sorted(byKeyPath: "title")
+        tableView.reloadData()
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +43,7 @@ class ReusableTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Items?.count ?? 1
     }
 
     /*

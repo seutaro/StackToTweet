@@ -27,41 +27,10 @@ class ViewController: UIViewController, PagingViewControllerDataSource {
         return categoryVC
     }
     
-    //MARK: - PagingViewControllerDataSource
-    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        return categories?.count ?? 0
-    }
-    
-    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let numberOfCategory = categories?.count ?? 1
-        var controllers:[UIViewController?] = []
-        
-        //以下のシーケンスの範囲は要確認
-        for i in 0...numberOfCategory {
-            if let category = categories?[i] {
-                let VC = createViewController(category: category)
-                controllers.append(VC)
-            }
-        }
-        
-        return controllers[index] ?? UIViewController() // デフォルト画面作成　→　差し替える
-    }
-    
-    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        
-        let numberOfCategory = categories?.count ?? 1
-        var categoriesString:[String] = []
-        for i in 0...numberOfCategory {
-            if let category = categories?[i] {
-                let categoryName = category.name
-                categoriesString.append(categoryName)
-            }
-        }
-        
-        return PagingIndexItem(index: index, title: categoriesString[index])
-    }
+
     
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let pagingViewController = PagingViewController()
@@ -83,6 +52,41 @@ class ViewController: UIViewController, PagingViewControllerDataSource {
         pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
 
+    
+    //MARK: - PagingViewControllerDataSource
+    func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+        return categories?.count ?? 0
+    }
+    
+    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        let numberOfCategory = categories?.count ?? 1
+        var controllers:[UIViewController?] = []
+        
+        //以下のシーケンスの範囲は要確認
+        for i in 0...numberOfCategory {
+            if let category = categories?[i] {
+                let VC = createViewController(category: category)
+                controllers.append(VC)
+            }
+        }
+        return controllers[index] ?? UIViewController() // デフォルト画面作成　→　差し替える
+    }
+    
+    
+    
+    
+    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+        
+        let numberOfCategory = categories?.count ?? 1
+        var categoriesString:[String] = []
+        for i in 0...numberOfCategory {
+            if let category = categories?[i] {
+                let categoryName = category.name
+                categoriesString.append(categoryName)
+            }
+        }
+        return PagingIndexItem(index: index, title: categoriesString[index])
+    }
 
 }
 
