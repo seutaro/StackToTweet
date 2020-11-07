@@ -6,8 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ReusableTableViewController: UITableViewController {
+    
+    let realm = try! Realm()
+    var Items: Results<Item>?
+    var category:Category? {
+        didSet {
+            //ここにItemをロードする関数
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
