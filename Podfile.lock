@@ -1,0 +1,16 @@
+PODS:
+  - Parchment (2.4.0)
+
+DEPENDENCIES:
+  - Parchment
+
+SPEC REPOS:
+  trunk:
+    - Parchment
+
+SPEC CHECKSUMS:
+  Parchment: 002785473861582385db5c6725165353c500198e
+
+PODFILE CHECKSUM: e490d326b110541be26cb2a23fb0f9afcec35010
+
+COCOAPODS: 1.10.0
