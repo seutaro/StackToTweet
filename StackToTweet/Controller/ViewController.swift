@@ -63,7 +63,7 @@ class ViewController: UIViewController, PagingViewControllerDataSource {
         var controllers:[UIViewController?] = []
         
         //以下のシーケンスの範囲は要確認
-        for i in 0...numberOfCategory {
+        for i in 0..<numberOfCategory {
             if let category = categories?[i] {
                 let VC = createViewController(category: category)
                 controllers.append(VC)
@@ -79,7 +79,7 @@ class ViewController: UIViewController, PagingViewControllerDataSource {
         
         let numberOfCategory = categories?.count ?? 1
         var categoriesString:[String] = []
-        for i in 0...numberOfCategory {
+        for i in 0..<numberOfCategory {
             if let category = categories?[i] {
                 let categoryName = category.name
                 categoriesString.append(categoryName)
