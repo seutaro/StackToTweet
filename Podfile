@@ -6,7 +6,17 @@ target 'StackToTweet' do
   use_frameworks!
 
   # Pods for StackToTweet
-pod 'Parchment'
+
 pod 'RealmSwift'
+pod 'Parchment'
+
+  target 'StackToTweetTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'StackToTweetUITests' do
+    # Pods for testing
+  end
 
 end
