@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -116,7 +116,6 @@
 			children = (
 				EA7165B2254EBDB100448F1C /* AppDelegate.swift */,
 				EA7165B4254EBDB100448F1C /* SceneDelegate.swift */,
-				EA7165E5255024A200448F1C /* Model */,
 				EA7165E6255024B400448F1C /* View */,
 				EA7165E7255024C200448F1C /* Controller */,
 				EA7165BB254EBDB200448F1C /* Assets.xcassets */,
@@ -144,13 +143,6 @@
 			path = StackToTweetUITests;
 			sourceTree = "<group>";
 		};
-		EA7165E5255024A200448F1C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		EA7165E6255024B400448F1C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +165,6 @@
 				7C98864E5D6DB181629682FB /* Pods-StackToTweet.debug.xcconfig */,
 				BBFAD70CCB60EB95356DAE0A /* Pods-StackToTweet.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
