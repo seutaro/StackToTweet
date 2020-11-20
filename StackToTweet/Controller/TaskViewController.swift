@@ -11,6 +11,7 @@ import RealmSwift
 
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
+    var addButtonDelegate: AddButtonDelegate?
     
     let realm = try! Realm()
     var categories: Results<Category>?
@@ -78,5 +79,32 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         return PagingIndexItem(index: index, title: categoriesString[index])
     }
     
-
+    
+    //MARK: - ボタンアクション
+    
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        var textfield = UITextField()
+        let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
+        let action = UIAlertAction(title: "タスクを追加", style: .default) { (action) in
+            let item = textfield.text!
+            self.addButtonDelegate?.addNewTaskItem(item: item)
+        }
+        
+        alert.addTextField { (alertTextfield) in
+            alertTextfield.placeholder = "新しいタスクを追加する"
+            textfield = alertTextfield
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+    }
+    
+    
+    
 }
