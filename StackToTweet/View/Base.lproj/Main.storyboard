@@ -48,7 +48,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="siG-gc-ifg" secondAttribute="bottom" constant="30" id="yc3-L0-ax7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9D2-l9-geN"/>
+                    <navigationItem key="navigationItem" id="9D2-l9-geN">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="dXA-9L-9UY" kind="presentation" modalTransitionStyle="coverVertical" id="1gY-eK-L2Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="gXr-92-8dp" id="qF3-HE-qic"/>
                         <outlet property="deleteButton" destination="siG-gc-ifg" id="t3S-uY-EJc"/>
@@ -78,8 +85,19 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="118.52678571428571"/>
         </scene>
+        <!--AddCategoryView-->
+        <scene sceneID="Gbi-mW-TeE">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AddCategoryView" storyboardName="AddCategoryView" id="dXA-9L-9UY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qXZ-dd-NZY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-RT-9Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="119"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

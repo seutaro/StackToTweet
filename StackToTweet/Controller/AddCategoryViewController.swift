@@ -9,7 +9,7 @@ import UIKit
 import Parchment
 import RealmSwift
 
-class HomeViewController: UIViewController {
+class AddCategoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
