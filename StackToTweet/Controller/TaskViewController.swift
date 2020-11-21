@@ -11,7 +11,7 @@ import RealmSwift
 
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
-    var addButtonDelegate: AddButtonDelegate?
+    var taskViewButtonDelegate: TaskViewButtonDelegate?
     
     let realm = try! Realm()
     var categories: Results<Category>?
@@ -90,7 +90,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
         let action = UIAlertAction(title: "タスクを追加", style: .default) { (action) in
             let item = textfield.text!
-            self.addButtonDelegate?.addNewTaskItem(item: item)
+            self.taskViewButtonDelegate?.addNewTaskItem(item: item)
         }
         
         alert.addTextField { (alertTextfield) in

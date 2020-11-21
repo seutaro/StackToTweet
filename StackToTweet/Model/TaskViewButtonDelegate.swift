@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AddButtonDelegate {
+protocol TaskViewButtonDelegate {
     func addNewTaskItem(item: String)
 }

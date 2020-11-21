@@ -18,7 +18,7 @@
 		EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7165BD254EBDB200448F1C /* LaunchScreen.storyboard */; };
 		EA7165CA254EBDB200448F1C /* StackToTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165C9254EBDB200448F1C /* StackToTweetTests.swift */; };
 		EA7165D5254EBDB200448F1C /* StackToTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */; };
-		EAAFB160256810150020568C /* AddButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAFB15F256810150020568C /* AddButtonDelegate.swift */; };
+		EAAFB160256810150020568C /* TaskViewButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */; };
 		EAC2AA2F2561169500C0B48B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA2E2561169500C0B48B /* Item.swift */; };
 		EAC2AA37256116A600C0B48B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA36256116A600C0B48B /* Category.swift */; };
 		EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA4725611AB800C0B48B /* TaskViewController.swift */; };
@@ -66,7 +66,7 @@
 		EA7165D0254EBDB200448F1C /* StackToTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackToTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackToTweetUITests.swift; sourceTree = "<group>"; };
 		EA7165D6254EBDB200448F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAAFB15F256810150020568C /* AddButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonDelegate.swift; sourceTree = "<group>"; };
+		EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewButtonDelegate.swift; sourceTree = "<group>"; };
 		EAC2AA2E2561169500C0B48B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EAC2AA36256116A600C0B48B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EAC2AA4725611AB800C0B48B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			children = (
 				EAC2AA2E2561169500C0B48B /* Item.swift */,
 				EAC2AA36256116A600C0B48B /* Category.swift */,
-				EAAFB15F256810150020568C /* AddButtonDelegate.swift */,
+				EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -452,7 +452,7 @@
 				EAC2AA4D25611B1F00C0B48B /* ReusableTableViewController.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
 				EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */,
-				EAAFB160256810150020568C /* AddButtonDelegate.swift in Sources */,
+				EAAFB160256810150020568C /* TaskViewButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
