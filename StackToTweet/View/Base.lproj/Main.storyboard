@@ -52,7 +52,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="dXA-9L-9UY" kind="presentation" modalTransitionStyle="coverVertical" id="1gY-eK-L2Q"/>
+                                <segue destination="dXA-9L-9UY" kind="show" id="vqF-FH-mMn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
