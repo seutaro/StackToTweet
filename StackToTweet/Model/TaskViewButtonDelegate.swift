@@ -9,4 +9,5 @@ import Foundation
 
 protocol TaskViewButtonDelegate {
     func addNewTaskItem(item: String)
+    func deleteTaskItem()
 }

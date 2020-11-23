@@ -103,6 +103,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        self.taskViewButtonDelegate?.deleteTaskItem()
     }
     
     

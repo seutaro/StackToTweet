@@ -10,6 +10,7 @@ import RealmSwift
 
 class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate {
     
+    
     let realm = try! Realm()
     var Items: Results<Item>?
     var category: Category? {
@@ -40,6 +41,31 @@ class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate 
         }
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "削除") { (action, view, complicationhandler) in
+            self.deleteItem(indexPath: indexPath)
+            complicationhandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func deleteItem(indexPath: IndexPath) {
+        
+        do {
+            try realm.write {
+                let deletedItem = self.Items![indexPath.row]
+                self.realm.delete(deletedItem)
+            }
+        } catch {
+            print("タスクの削除に失敗しました")
+        }
+        tableView.reloadData()
     }
     
 
@@ -84,6 +110,23 @@ class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate 
         }
         self.tableView.reloadData()
     }
+    
+
+    
+    func deleteTaskItem() {
+        if let currentCategory = category {
+            do {
+                try self.realm.write {
+                    let deletedItems = currentCategory.items.filter("done == true")
+                    self.realm.delete(deletedItems)
+                }
+            } catch {
+                print("タスクの削除に失敗しました")
+            }
+        }
+        tableView.reloadData()
+    }
+    
 
 
 }
