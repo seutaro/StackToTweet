@@ -8,27 +8,105 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Category View Controller-->
+        <!--カテゴリ管理-->
         <scene sceneID="wEl-hD-IaL">
             <objects>
                 <viewController storyboardIdentifier="AddCategoryView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qDH-hd-weQ" customClass="AddCategoryViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DGA-ej-u22">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="カテゴリ名を入力" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHB-Rw-sYn">
+                                <rect key="frame" x="0.0" y="144" width="414" height="47.5"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="tintColor" red="0.28235294119999998" green="0.87361631829999997" blue="0.74467861130000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="categoryTextfieldEditAction:" destination="qDH-hd-weQ" eventType="editingDidEnd" id="slk-se-rKM"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新しいカテゴリを追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-wN-PsO">
+                                <rect key="frame" x="10" y="98" width="304" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-PQ-Pi8">
+                                <rect key="frame" x="0.0" y="293.5" width="414" height="568.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="JPU-TV-hLZ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JPU-TV-hLZ" id="qWN-Fh-4bQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmm-hA-lxC">
+                                <rect key="frame" x="135" y="226.5" width="144" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="追加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="categoryAddButtonPressed:" destination="qDH-hd-weQ" eventType="touchUpInside" id="F3p-16-CgP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ewy-fg-feB"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.485138132" blue="0.25800502650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fmm-hA-lxC" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" constant="135" id="5FH-83-yNi"/>
+                            <constraint firstItem="ewy-fg-feB" firstAttribute="trailing" secondItem="LLZ-wN-PsO" secondAttribute="trailing" constant="100" id="66F-a1-4N6"/>
+                            <constraint firstItem="LLZ-wN-PsO" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" constant="10" id="6ly-pN-elF"/>
+                            <constraint firstItem="ewy-fg-feB" firstAttribute="trailing" secondItem="fmm-hA-lxC" secondAttribute="trailing" constant="135" id="CuG-1c-KFJ"/>
+                            <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="top" secondItem="fmm-hA-lxC" secondAttribute="bottom" constant="23" id="Hoa-jd-XqX"/>
+                            <constraint firstItem="LLZ-wN-PsO" firstAttribute="top" secondItem="ewy-fg-feB" secondAttribute="top" constant="10" id="I9H-kN-0xY"/>
+                            <constraint firstItem="lHB-Rw-sYn" firstAttribute="top" secondItem="LLZ-wN-PsO" secondAttribute="bottom" constant="10" id="SZt-JE-Itk"/>
+                            <constraint firstItem="lHB-Rw-sYn" firstAttribute="trailing" secondItem="ewy-fg-feB" secondAttribute="trailing" id="T9p-dN-iaW"/>
+                            <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="trailing" secondItem="ewy-fg-feB" secondAttribute="trailing" id="ngM-Tc-b5M"/>
+                            <constraint firstItem="lHB-Rw-sYn" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" id="puh-Ch-5BF"/>
+                            <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="bottom" secondItem="ewy-fg-feB" secondAttribute="bottom" id="rGZ-WS-fAI"/>
+                            <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" id="rtl-ee-QTq"/>
+                            <constraint firstItem="fmm-hA-lxC" firstAttribute="top" secondItem="lHB-Rw-sYn" secondAttribute="bottom" constant="35" id="wpw-Tx-BQB"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uoe-Lv-FP5"/>
+                    <navigationItem key="navigationItem" title="カテゴリ管理" id="Uoe-Lv-FP5">
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="vBI-ph-RiJ">
+                            <color key="tintColor" systemColor="linkColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="categoryAddButton" destination="fmm-hA-lxC" id="YFa-Ee-QQ3"/>
+                        <outlet property="categoryTableView" destination="WfQ-PQ-Pi8" id="CZq-DB-Xa6"/>
+                        <outlet property="categoryTextfield" destination="lHB-Rw-sYn" id="4M7-6e-JN0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKQ-iK-4TN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="76.339285714285708"/>
+            <point key="canvasLocation" x="812" y="15"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -17,7 +17,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     var categories: Results<Category>?
     
     func loadCategories() {
-        categories = realm.objects(Category.self) //カテゴリをロードする
+        categories = realm.objects(Category.self) //カテゴリをロードする 例外処理書く
     }
 
     func createViewController(category: Category) -> ReusableTableViewController {
@@ -30,6 +30,8 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadCategories()
 
         let pagingViewController = PagingViewController()
         pagingViewController.dataSource = self
