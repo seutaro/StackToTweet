@@ -12,12 +12,14 @@
 		E878B9A8AAC983669098B73B /* Pods_StackToTweet_StackToTweetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949C6E73AD64D4C5023F6E93 /* Pods_StackToTweet_StackToTweetUITests.framework */; };
 		EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B2254EBDB100448F1C /* AppDelegate.swift */; };
 		EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B4254EBDB100448F1C /* SceneDelegate.swift */; };
-		EA7165B7254EBDB100448F1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B6254EBDB100448F1C /* HomeViewController.swift */; };
+		EA7165B7254EBDB100448F1C /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B6254EBDB100448F1C /* AddCategoryViewController.swift */; };
 		EA7165BA254EBDB100448F1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7165B8254EBDB100448F1C /* Main.storyboard */; };
 		EA7165BC254EBDB200448F1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA7165BB254EBDB200448F1C /* Assets.xcassets */; };
 		EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7165BD254EBDB200448F1C /* LaunchScreen.storyboard */; };
 		EA7165CA254EBDB200448F1C /* StackToTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165C9254EBDB200448F1C /* StackToTweetTests.swift */; };
 		EA7165D5254EBDB200448F1C /* StackToTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */; };
+		EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97949825694B97004A1924 /* AddCategoryView.storyboard */; };
+		EAAFB160256810150020568C /* TaskViewButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */; };
 		EAC2AA2F2561169500C0B48B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA2E2561169500C0B48B /* Item.swift */; };
 		EAC2AA37256116A600C0B48B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA36256116A600C0B48B /* Category.swift */; };
 		EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA4725611AB800C0B48B /* TaskViewController.swift */; };
@@ -54,7 +56,7 @@
 		EA7165AF254EBDB100448F1C /* StackToTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackToTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165B2254EBDB100448F1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA7165B4254EBDB100448F1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EA7165B6254EBDB100448F1C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EA7165B6254EBDB100448F1C /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		EA7165B9254EBDB100448F1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA7165BB254EBDB200448F1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA7165BE254EBDB200448F1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 		EA7165D0254EBDB200448F1C /* StackToTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackToTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackToTweetUITests.swift; sourceTree = "<group>"; };
 		EA7165D6254EBDB200448F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA97949825694B97004A1924 /* AddCategoryView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategoryView.storyboard; sourceTree = "<group>"; };
+		EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewButtonDelegate.swift; sourceTree = "<group>"; };
 		EAC2AA2E2561169500C0B48B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EAC2AA36256116A600C0B48B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EAC2AA4725611AB800C0B48B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				EA7165B8254EBDB100448F1C /* Main.storyboard */,
+				EA97949825694B97004A1924 /* AddCategoryView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,7 +180,7 @@
 		EA7165E7255024C200448F1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EA7165B6254EBDB100448F1C /* HomeViewController.swift */,
+				EA7165B6254EBDB100448F1C /* AddCategoryViewController.swift */,
 				EAC2AA4725611AB800C0B48B /* TaskViewController.swift */,
 				EAC2AA4C25611B1F00C0B48B /* ReusableTableViewController.swift */,
 			);
@@ -187,6 +192,7 @@
 			children = (
 				EAC2AA2E2561169500C0B48B /* Item.swift */,
 				EAC2AA36256116A600C0B48B /* Category.swift */,
+				EAAFB15F256810150020568C /* TaskViewButtonDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */,
 				EA7165BC254EBDB200448F1C /* Assets.xcassets in Resources */,
 				EA7165BA254EBDB100448F1C /* Main.storyboard in Resources */,
+				EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,11 +451,12 @@
 			files = (
 				EAC2AA2F2561169500C0B48B /* Item.swift in Sources */,
 				EAC2AA37256116A600C0B48B /* Category.swift in Sources */,
-				EA7165B7254EBDB100448F1C /* HomeViewController.swift in Sources */,
+				EA7165B7254EBDB100448F1C /* AddCategoryViewController.swift in Sources */,
 				EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */,
 				EAC2AA4D25611B1F00C0B48B /* ReusableTableViewController.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
 				EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */,
+				EAAFB160256810150020568C /* TaskViewButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
