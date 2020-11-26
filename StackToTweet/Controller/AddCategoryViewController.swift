@@ -64,9 +64,13 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource {
                 newCategory.name = categoryTextfield.text!
                 realm.add(newCategory)
             }
+            
+            categoryTableView.reloadData()
         } catch {
             print("カテゴリの追加に失敗しました")
         }
+        
+        categoryTextfield.resignFirstResponder()
     }
     
     
