@@ -11,11 +11,17 @@
         <!--タスク管理画面-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TaskViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-3Y-ZJh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <connections>
+                                    <segue destination="uei-Fp-dur" kind="embed" id="eF3-Fj-7ES"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
                                 <rect key="frame" x="299" y="769" width="85" height="63"/>
                                 <color key="backgroundColor" red="0.10781801489999999" green="0.26238328220000001" blue="0.28235721590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -42,6 +48,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="T1x-3Y-ZJh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="90f-lx-wsu"/>
+                            <constraint firstItem="T1x-3Y-ZJh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="980-p8-iIu"/>
+                            <constraint firstAttribute="bottom" secondItem="T1x-3Y-ZJh" secondAttribute="bottom" id="IC8-oV-9dv"/>
+                            <constraint firstItem="T1x-3Y-ZJh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SQD-pR-eAm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gXr-92-8dp" secondAttribute="trailing" constant="30" id="dtN-4K-3lh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gXr-92-8dp" secondAttribute="bottom" constant="30" id="sCM-7g-sIh"/>
                             <constraint firstItem="siG-gc-ifg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xtd-9u-eUZ"/>
@@ -64,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.7246376811595" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="118.52678571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Cm-E0-uQ0">
@@ -98,7 +108,22 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-RT-9Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="119"/>
+            <point key="canvasLocation" x="1703" y="-240"/>
+        </scene>
+        <!--Task View Controller-->
+        <scene sceneID="Py0-9z-GVN">
+            <objects>
+                <viewController id="uei-Fp-dur" customClass="TaskViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N5y-Fh-ByW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Vj7-0u-NZb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nqv-1f-d94" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939" y="145"/>
         </scene>
     </scenes>
     <resources>

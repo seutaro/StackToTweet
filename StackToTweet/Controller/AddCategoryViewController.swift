@@ -9,7 +9,7 @@ import UIKit
 import Parchment
 import RealmSwift
 
-class AddCategoryViewController: UIViewController, UITableViewDataSource {
+class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
     let realm = try! Realm()
     var categories: Results<Category>?
@@ -28,6 +28,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         categoryTableView.dataSource = self
+        categoryTableView.delegate = self
         
         loadCategories()
         
@@ -46,6 +47,20 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource {
         cell.textLabel?.text = categories?[indexPath.row].name
         
         return cell
+    }
+    
+    
+    
+    //MARK: - tableview Delegate
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "削除") { (action, view, complicationhandler) in
+            self.deleteCategory(indexPath: indexPath)
+            complicationhandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
 
@@ -73,8 +88,23 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource {
         categoryTextfield.resignFirstResponder()
     }
     
+    func deleteCategory(indexPath: IndexPath) {
+        
+        do {
+            try realm.write {
+                let deleteCategory = self.categories![indexPath.row]
+                self.realm.delete(deleteCategory)
+            }
+        } catch {
+            print("タスクの削除に失敗しました")
+        }
+        categoryTableView.reloadData()
+    }
     
-    
+    //MARK: - callback
+    func callback() {
+        
+    }
 
 }
 

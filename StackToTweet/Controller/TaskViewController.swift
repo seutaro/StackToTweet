@@ -11,20 +11,17 @@ import RealmSwift
 
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
-    var taskViewButtonDelegate: TaskViewButtonDelegate?
+    
     
     let realm = try! Realm()
     var categories: Results<Category>?
+    let pagingViewController = PagingViewController()
+    var PagingVCs: [UIViewController] = []
+    var CategoriesString: [String] = []
+    
     
     func loadCategories() {
         categories = realm.objects(Category.self) //カテゴリをロードする 例外処理書く
-    }
-
-    func createViewController(category: Category) -> ReusableTableViewController {
-        let categoryVC = ReusableTableViewController()
-        categoryVC.category = category
-        
-        return categoryVC
     }
     
     
@@ -33,8 +30,11 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         
         loadCategories()
 
-        let pagingViewController = PagingViewController()
+        
+        updateModel()
+        
         pagingViewController.dataSource = self
+        
         
         addChild(pagingViewController)
         view.addSubview(pagingViewController.view)
@@ -52,62 +52,69 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     //MARK: - PagingViewControllerDatasSource
     
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        return categories?.count ?? 0
+        return CategoriesString.count
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let numberOfCategory = categories?.count ?? 1
-        var controllers:[UIViewController?] = []
-        
-        //以下シーケンスの範囲は要確認
-        for i in 0..<numberOfCategory {
-            if let category = categories?[i] {
-                let  VC = createViewController(category: category)
-                controllers.append(VC)
-            }
-        }
-        return controllers[index] ?? UIViewController() // デフォルト作成　→　ここのUIViewController() と差し替える？
+        return PagingVCs[index] // デフォルト作成　→　ここのUIViewController() と差し替える？
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        let numberOfCategory = categories?.count ?? 1
-        var categoriesString:[String] = []
-        for i in 0..<numberOfCategory {
+        return PagingIndexItem(index: index, title: CategoriesString[index])
+    }
+    
+    //MARK: - callback
+    
+    func callback() {
+        //データの更新
+        
+    }
+    
+    func getNumberOfCategories() -> Int {
+        
+        guard let numberOfCategories = categories?.count else {
+            return 0
+        }
+        return numberOfCategories
+    }
+    
+    func createViewController(of category: Category) -> ReusableTableViewController {
+        let categoryVC = ReusableTableViewController()
+        categoryVC.category = category
+        
+        return categoryVC
+    }
+    
+    func getArrayOfViewControllers(with numberOfCategories: Int) -> [UIViewController] {
+        var controllers:[UIViewController] = []
+        
+        for i in 0 ..< numberOfCategories {
             if let category = categories?[i] {
-                let categoryName = category.name
-                categoriesString.append(categoryName)
+                let VC = createViewController(of: category)
+                controllers.append(VC)
             }
         }
-        return PagingIndexItem(index: index, title: categoriesString[index])
+        return controllers
     }
     
-    
-    //MARK: - ボタンアクション
-    
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    
-    @IBAction func addButtonPressed(_ sender: Any) {
-        var textfield = UITextField()
-        let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
-        let action = UIAlertAction(title: "タスクを追加", style: .default) { (action) in
-            let item = textfield.text!
-            self.taskViewButtonDelegate?.addNewTaskItem(item: item)
+    func getArrayOfCategoryStrings(with numberOfCategories: Int) -> [String] {
+        var namesOfCategories: [String] = []
+
+        for i in 0 ..< numberOfCategories {
+            if let category = categories?[i].name {
+                namesOfCategories.append(category)
+            }
         }
-        
-        alert.addTextField { (alertTextfield) in
-            alertTextfield.placeholder = "新しいタスクを追加する"
-            textfield = alertTextfield
-        }
-        
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        return namesOfCategories
     }
     
-    @IBAction func deleteButtonPressed(_ sender: Any) {
-        self.taskViewButtonDelegate?.deleteTaskItem()
+    func updateModel() {
+        let numberOfCategory = getNumberOfCategories()
+        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategory)
+        PagingVCs = getArrayOfViewControllers(with: numberOfCategory) //PagingVCsの中をupdate
+        
+        
+        pagingViewController.reloadData()
     }
-    
-    
     
 }
