@@ -76,8 +76,10 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         do {
             try realm.write {
                 let newCategory = Category()
-                newCategory.name = categoryTextfield.text!
-                realm.add(newCategory)
+                if categoryTextfield.text != "" {
+                    newCategory.name = categoryTextfield.text!
+                    realm.add(newCategory)
+                }
             }
             
             categoryTableView.reloadData()
@@ -101,10 +103,6 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         categoryTableView.reloadData()
     }
     
-    //MARK: - callback
-    func callback() {
-        
-    }
-
+    
 }
 

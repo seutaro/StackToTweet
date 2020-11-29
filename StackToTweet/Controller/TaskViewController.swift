@@ -20,19 +20,10 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     var CategoriesString: [String] = []
     
     
-    func loadCategories() {
-        categories = realm.objects(Category.self) //カテゴリをロードする 例外処理書く
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         loadCategories()
-
-        
-        updateModel()
-        
         pagingViewController.dataSource = self
         
         
@@ -48,6 +39,9 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateModel()
+    }
 
     //MARK: - PagingViewControllerDatasSource
     
@@ -63,12 +57,21 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         return PagingIndexItem(index: index, title: CategoriesString[index])
     }
     
-    //MARK: - callback
+    //MARK: - データのupdate
     
-    func callback() {
-        //データの更新
-        
+    func loadCategories() {
+        categories = realm.objects(Category.self)
     }
+    
+    func updateModel() {
+        let numberOfCategory = getNumberOfCategories()
+        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategory)
+        PagingVCs = getArrayOfViewControllers(with: numberOfCategory)
+        
+        
+        pagingViewController.reloadData()
+    }
+    
     
     func getNumberOfCategories() -> Int {
         
@@ -108,13 +111,5 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         return namesOfCategories
     }
     
-    func updateModel() {
-        let numberOfCategory = getNumberOfCategories()
-        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategory)
-        PagingVCs = getArrayOfViewControllers(with: numberOfCategory) //PagingVCsの中をupdate
-        
-        
-        pagingViewController.reloadData()
-    }
-    
+
 }

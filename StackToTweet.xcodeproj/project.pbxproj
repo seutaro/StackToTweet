@@ -19,6 +19,8 @@
 		EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7165BD254EBDB200448F1C /* LaunchScreen.storyboard */; };
 		EA7165CA254EBDB200448F1C /* StackToTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165C9254EBDB200448F1C /* StackToTweetTests.swift */; };
 		EA7165D5254EBDB200448F1C /* StackToTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */; };
+		EA80AA5A2573C7A900E2556D /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80AA582573C7A900E2556D /* ReusableCell.swift */; };
+		EA80AA5B2573C7A900E2556D /* ReusableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA80AA592573C7A900E2556D /* ReusableCell.xib */; };
 		EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97949825694B97004A1924 /* AddCategoryView.storyboard */; };
 		EAAFB160256810150020568C /* HomeViewButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAFB15F256810150020568C /* HomeViewButtonDelegate.swift */; };
 		EAC2AA2F2561169500C0B48B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA2E2561169500C0B48B /* Item.swift */; };
@@ -69,6 +71,8 @@
 		EA7165D0254EBDB200448F1C /* StackToTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackToTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165D4254EBDB200448F1C /* StackToTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackToTweetUITests.swift; sourceTree = "<group>"; };
 		EA7165D6254EBDB200448F1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA80AA582573C7A900E2556D /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		EA80AA592573C7A900E2556D /* ReusableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCell.xib; sourceTree = "<group>"; };
 		EA97949825694B97004A1924 /* AddCategoryView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategoryView.storyboard; sourceTree = "<group>"; };
 		EAAFB15F256810150020568C /* HomeViewButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButtonDelegate.swift; sourceTree = "<group>"; };
 		EAC2AA2E2561169500C0B48B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				EA7165B8254EBDB100448F1C /* Main.storyboard */,
+				EA80AA582573C7A900E2556D /* ReusableCell.swift */,
+				EA80AA592573C7A900E2556D /* ReusableCell.xib */,
 				EA97949825694B97004A1924 /* AddCategoryView.storyboard */,
 			);
 			path = View;
@@ -324,6 +330,7 @@
 				EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */,
 				EA7165BC254EBDB200448F1C /* Assets.xcassets in Resources */,
 				EA7165BA254EBDB100448F1C /* Main.storyboard in Resources */,
+				EA80AA5B2573C7A900E2556D /* ReusableCell.xib in Resources */,
 				EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +467,7 @@
 				EA24D34F256FE45E007337C0 /* HomeViewController.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
 				EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */,
+				EA80AA5A2573C7A900E2556D /* ReusableCell.swift in Sources */,
 				EAAFB160256810150020568C /* HomeViewButtonDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

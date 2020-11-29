@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
         }
         
         alert.addTextField { (alertTextfield) in
-            alertTextfield.placeholder = "新しいタスクを追加する"
+            alertTextfield.placeholder = "新しいタスクを記入"
             textfield = alertTextfield
         }
         
