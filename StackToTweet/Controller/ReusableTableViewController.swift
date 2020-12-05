@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate {
+class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate {
     
     
     let realm = try! Realm()
@@ -22,11 +22,18 @@ class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate 
     
     func loadItems() {
         Items = category?.items.sorted(byKeyPath: "title")
-        tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadItems()
+        tableView.reloadData()
+        tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //ここにカテゴリをTaskViewControllerに送る処理
+        tableView.reloadData() //もしかするといらないかもしれない
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,12 +80,12 @@ class ReusableTableViewController: UITableViewController,TaskViewButtonDelegate 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Items?.count ?? 1
+        
+        return Items?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

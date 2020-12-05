@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TaskViewButtonDelegate {
+protocol HomeViewButtonDelegate {
     func addNewTaskItem(item: String)
     func deleteTaskItem()
 }
