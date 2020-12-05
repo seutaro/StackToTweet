@@ -19,7 +19,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1x-3Y-ZJh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
-                                    <segue destination="uei-Fp-dur" kind="embed" id="eF3-Fj-7ES"/>
+                                    <segue destination="uei-Fp-dur" kind="embed" identifier="homeVC" id="eF3-Fj-7ES"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">

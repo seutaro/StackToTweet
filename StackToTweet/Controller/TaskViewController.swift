@@ -58,7 +58,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     //MARK: - データのupdate
-    
+    //HomeViewControllerからの通知を受けてReusableTableViewControllerからもらったcategoryにhomeviewcontrollerからもらったitemを保存
     func loadCategories() {
         categories = realm.objects(Category.self)
     }

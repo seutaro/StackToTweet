@@ -28,12 +28,12 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
         super.viewDidLoad()
         loadItems()
         tableView.reloadData()
+        tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        loadItems()
-        tableView.reloadData()
+        //ここにカテゴリをTaskViewControllerに送る処理
+        tableView.reloadData() //もしかするといらないかもしれない
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
