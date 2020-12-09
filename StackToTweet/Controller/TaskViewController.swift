@@ -19,6 +19,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     var PagingVCs: [UIViewController] = []
     var CategoriesString: [String] = []
     
+    let recodeModel = ScreenRecodeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
