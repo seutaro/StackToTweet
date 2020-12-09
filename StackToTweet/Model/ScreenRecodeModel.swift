@@ -11,9 +11,11 @@ import RealmSwift
 class ScreenRecodeModel {
     var categories: Results<Category>?
     var currentDisplayCategory: Category?
-    var complihension: (() -> Void)?
+    var funcOfCurrentTableViewReloadData: (() -> Void)?
     var PagingVCs: [UIViewController] = []
     var CategoriesString: [String] = []
+    
+    
     
     func getPagingVCs() -> [UIViewController] {
         return PagingVCs
@@ -31,6 +33,7 @@ class ScreenRecodeModel {
         let categoryVC = ReusableTableViewController()
         categoryVC.category = category
         categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category}
+        categoryVC.passFuncOfCurrentTableViewReloadData = {self.funcOfCurrentTableViewReloadData = categoryVC.funcOftableViewReloadData}
         
         return categoryVC
     }
