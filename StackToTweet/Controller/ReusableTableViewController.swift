@@ -10,15 +10,18 @@ import RealmSwift
 
 class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate {
     
-    
+    var recode = DisplayScreenRecoding()
     let realm = try! Realm()
     var Items: Results<Item>?
+    var setCurrentDisplayCategory: ((_ category: Category) -> Void)? // currentDisplayCategory = category taskviewcontroller内 RecodeModel.category = currentCategory
+    var tableviewReloadData: (() -> Void) { tableView.reloadData} //こいつをScreenRecodeModelのプロパティに代入　そのためのcomplihentionが必要　taskviewcontroller内でcomplihention(recode) = complihention(tableview) となる
     var category: Category? {
         didSet {
             //ここにアイテムをロードする関数
             loadItems()
         }
     }
+    
     
     func loadItems() {
         Items = category?.items.sorted(byKeyPath: "title")
@@ -29,11 +32,14 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
         loadItems()
         tableView.reloadData()
         tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //ここにカテゴリをTaskViewControllerに送る処理
+        recode.currentDisplayCategory = category
+        self.setCurrentDisplayCategory!(category!)
         tableView.reloadData() //もしかするといらないかもしれない
+        print(category!)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
