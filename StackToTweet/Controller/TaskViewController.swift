@@ -38,6 +38,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         recodeModel.updateModel()
+        pagingViewController.reloadData()
     }
 
     //MARK: - PagingViewControllerDatasSource

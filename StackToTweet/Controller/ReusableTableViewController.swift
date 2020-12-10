@@ -17,7 +17,6 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
     var tableViewReloadData: (() -> Void) { tableView.reloadData} //こいつをScreenRecodeModelのプロパティに代入　そのためのcomplihentionが必要　taskviewcontroller内でcomplihention(recode) = complihention(tableview) となる
     var category: Category? {
         didSet {
-            //ここにアイテムをロードする関数
             loadItems()
         }
     }
@@ -30,16 +29,18 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadItems()
-        tableView.reloadData()
         tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.setCurrentDisplayCategory!(category!)
+        setCurrentDisplayCategory!(category!)
         passFuncOfCurrentTableViewReloadData!()
         tableView.reloadData() //もしかするといらないかもしれない
-        print(category!)
     }
+    
+    
+    
+    //MARK: - tableviewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = Items?[indexPath.row] {
@@ -115,16 +116,16 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
                     newItem.title = item
                     currentCategory.items.append(newItem)
                 }
-                
+
             } catch {
                 print("新しいタスクの追加に失敗しました")
             }
         }
         self.tableView.reloadData()
     }
-    
 
-    
+
+
     func deleteTaskItem() {
         if let currentCategory = category {
             do {
