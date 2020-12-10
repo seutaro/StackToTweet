@@ -14,17 +14,13 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     
     let realm = try! Realm()
-    var categories: Results<Category>?
     let pagingViewController = PagingViewController()
-    var PagingVCs: [UIViewController] = []
-    var CategoriesString: [String] = []
-    
     let recodeModel = ScreenRecodeModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        loadCategories()
+        recodeModel.loadCategories()
         pagingViewController.dataSource = self
         
         
@@ -41,76 +37,24 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateModel()
+        recodeModel.updateModel()
     }
 
     //MARK: - PagingViewControllerDatasSource
     
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        return CategoriesString.count
-    }
-    
-    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        return PagingVCs[index] // デフォルト作成　→　ここのUIViewController() と差し替える？
-    }
-    
-    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        return PagingIndexItem(index: index, title: CategoriesString[index])
-    }
-    
-    //MARK: - データのupdate
-    //HomeViewControllerからの通知を受けてReusableTableViewControllerからもらったcategoryにhomeviewcontrollerからもらったitemを保存
-    func loadCategories() {
-        categories = realm.objects(Category.self)
-    }
-    
-    func updateModel() {
-        let numberOfCategory = getNumberOfCategories()
-        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategory)
-        PagingVCs = getArrayOfViewControllers(with: numberOfCategory)
-        
-        
-        pagingViewController.reloadData()
-    }
-    
-    
-    func getNumberOfCategories() -> Int {
-        
-        guard let numberOfCategories = categories?.count else {
-            return 0
-        }
+        let numberOfCategories = recodeModel.CategoriesString.count
         return numberOfCategories
     }
     
-    func createViewController(of category: Category) -> ReusableTableViewController {
-        let categoryVC = ReusableTableViewController()
-        categoryVC.category = category
-        
-        return categoryVC
+    func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+        let controllers = recodeModel.PagingVCs
+        return controllers[index] // デフォルト作成　→　ここのUIViewController() と差し替える？
     }
     
-    func getArrayOfViewControllers(with numberOfCategories: Int) -> [UIViewController] {
-        var controllers:[UIViewController] = []
-        
-        for i in 0 ..< numberOfCategories {
-            if let category = categories?[i] {
-                let VC = createViewController(of: category)
-                controllers.append(VC)
-            }
-        }
-        return controllers
+    func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+        let nameOfCategories = recodeModel.CategoriesString
+        return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
-    
-    func getArrayOfCategoryStrings(with numberOfCategories: Int) -> [String] {
-        var namesOfCategories: [String] = []
-
-        for i in 0 ..< numberOfCategories {
-            if let category = categories?[i].name {
-                namesOfCategories.append(category)
-            }
-        }
-        return namesOfCategories
-    }
-    
 
 }
