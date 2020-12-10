@@ -11,6 +11,7 @@
 		3B285F394734695B2A7DF728 /* Pods_StackToTweetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8CD32509FB29B4E2C576D0 /* Pods_StackToTweetTests.framework */; };
 		E878B9A8AAC983669098B73B /* Pods_StackToTweet_StackToTweetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949C6E73AD64D4C5023F6E93 /* Pods_StackToTweet_StackToTweetUITests.framework */; };
 		EA24D34F256FE45E007337C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24D34E256FE45E007337C0 /* HomeViewController.swift */; };
+		EA67220925825855002594F3 /* ScreenRecodeModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67220825825855002594F3 /* ScreenRecodeModelDelegate.swift */; };
 		EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B2254EBDB100448F1C /* AppDelegate.swift */; };
 		EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B4254EBDB100448F1C /* SceneDelegate.swift */; };
 		EA7165B7254EBDB100448F1C /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7165B6254EBDB100448F1C /* AddCategoryViewController.swift */; };
@@ -59,6 +60,7 @@
 		BBFAD70CCB60EB95356DAE0A /* Pods-StackToTweet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackToTweet.release.xcconfig"; path = "Target Support Files/Pods-StackToTweet/Pods-StackToTweet.release.xcconfig"; sourceTree = "<group>"; };
 		CB8CD32509FB29B4E2C576D0 /* Pods_StackToTweetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StackToTweetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA24D34E256FE45E007337C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EA67220825825855002594F3 /* ScreenRecodeModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenRecodeModelDelegate.swift; sourceTree = "<group>"; };
 		EA7165AF254EBDB100448F1C /* StackToTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackToTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7165B2254EBDB100448F1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA7165B4254EBDB100448F1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				EAC2AA36256116A600C0B48B /* Category.swift */,
 				EAAFB15F256810150020568C /* HomeViewButtonDelegate.swift */,
 				EADF3663257FCA74005B54D7 /* ScreenRecodeModel.swift */,
+				EA67220825825855002594F3 /* ScreenRecodeModelDelegate.swift */,
 				EADF365D257BCF35005B54D7 /* DisplayScreenRecoding.swift */,
 			);
 			path = Model;
@@ -471,6 +474,7 @@
 				EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */,
 				EAC2AA4D25611B1F00C0B48B /* ReusableTableViewController.swift in Sources */,
 				EA24D34F256FE45E007337C0 /* HomeViewController.swift in Sources */,
+				EA67220925825855002594F3 /* ScreenRecodeModelDelegate.swift in Sources */,
 				EA7165B5254EBDB100448F1C /* SceneDelegate.swift in Sources */,
 				EADF365E257BCF35005B54D7 /* DisplayScreenRecoding.swift in Sources */,
 				EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */,

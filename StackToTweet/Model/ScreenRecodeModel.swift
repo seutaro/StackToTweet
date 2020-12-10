@@ -28,7 +28,6 @@ class ScreenRecodeModel {
     
     func loadCategories() {
         categories = realm.objects(Category.self)
-        
     }
     
     func getNumberOfCategories() -> Int {
@@ -72,7 +71,18 @@ class ScreenRecodeModel {
         return namesOfCategories
     }
     
-    func setScreenCategory(with category:Category) -> Void {
-        currentDisplayCategory = category
-    }
 }
+
+//MARK: - ScreenRecodeModelDelegate
+
+//extension ScreenRecodeModel: ScreenRecodeModelDelegate {
+//    func addNewTaskItem() {
+//        <#code#>
+//    }
+//
+//    func deleteTaskItem() {
+//        <#code#>
+//    }
+//
+//
+//}
