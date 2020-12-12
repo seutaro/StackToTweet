@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ScreenRecodeModelDelegate {
-    func addNewTaskItem()
+    func addNewTask(of item:String)
     func deleteTaskItem()
 }

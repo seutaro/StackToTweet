@@ -11,6 +11,7 @@ import RealmSwift
 class HomeViewController: UIViewController {
 
     var homeViewButtonDelegate: HomeViewButtonDelegate?
+    var screenRecodeModelDelegate: ScreenRecodeModelDelegate?
     
     
     override func viewDidLoad() {
@@ -26,24 +27,26 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     
     @IBAction func addButtonPressed(_ sender: Any) {
+        
         var textfield = UITextField()
+        let item = textfield.text!
+        
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
         let action = UIAlertAction(title: "追加", style: .default) { (action) in
-            let item = textfield.text!
-            self.homeViewButtonDelegate?.addNewTaskItem(item: item)
-        }
+            self.screenRecodeModelDelegate?.addNewTask(of: item)
+            }
         
         alert.addTextField { (alertTextfield) in
             alertTextfield.placeholder = "新しいタスクを記入"
             textfield = alertTextfield
         }
-        
+    
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
-        self.homeViewButtonDelegate?.deleteTaskItem()
+        self.screenRecodeModelDelegate?.deleteTaskItem()
     }
     
     
