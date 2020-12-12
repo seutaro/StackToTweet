@@ -10,6 +10,7 @@ import RealmSwift
 
 class ScreenRecodeModel {
     
+    
     let realm = try! Realm()
     var categories: Results<Category>?
     var currentDisplayCategory: Category?               //現在描画されているtableview内に表示されているカテゴリ
@@ -70,21 +71,14 @@ class ScreenRecodeModel {
         return namesOfCategories
     }
     
-}
-
-//MARK: - ScreenRecodeModelDelegate
-
-extension ScreenRecodeModel: ScreenRecodeModelDelegate {
-    
-    func addNewTask(of item: String) {
+    func addNewTask(of item:String) {
         guard let category = currentDisplayCategory else {
-            //アラートで”カテゴリを追加してください”
-            print("カテゴリを追加してください")
+            print("カテゴリを追加してください")  //delegateでアラートを出しても良い self.recodedelegate.pushalert
             return
         }
-        print(item)
+        
         do {
-            try self.realm.write {
+            try realm.write {
                 let newItem = Item()
                 newItem.title = item
                 category.items.append(newItem)
@@ -92,10 +86,38 @@ extension ScreenRecodeModel: ScreenRecodeModelDelegate {
         } catch {
             print("タスクの追加に失敗しました")
         }
+        doCurrentTableviewReloadData!()
     }
-
-    func deleteTaskItem() {
-    }
-
-
+    
 }
+
+//MARK: - ScreenRecodeModelDelegate
+
+//extension ScreenRecodeModel: ScreenRecodeModelDelegate {
+//    func addNewTaskTest() {
+//    }
+//    
+//    
+//    func addNewTask(of item: String) {
+//        guard let category = currentDisplayCategory else {
+//            //アラートで”カテゴリを追加してください”
+//            print("カテゴリを追加してください")
+//            return
+//        }
+//        print(item)
+//        do {
+//            try self.realm.write {
+//                let newItem = Item()
+//                newItem.title = item
+//                category.items.append(newItem)
+//            }
+//        } catch {
+//            print("タスクの追加に失敗しました")
+//        }
+//    }
+//
+//    func deleteTaskItem() {
+//    }
+//
+//
+//}
