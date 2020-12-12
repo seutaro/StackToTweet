@@ -79,6 +79,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     @IBAction func DeleteButtonPressed(_ sender: Any) {
+        recodeModel.deleteTask()
     }
     
     
