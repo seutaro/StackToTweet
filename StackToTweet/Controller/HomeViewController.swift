@@ -10,13 +10,13 @@ import RealmSwift
 
 class HomeViewController: UIViewController {
 
-    var homeViewButtonDelegate: HomeViewButtonDelegate?
     var screenRecodeModelDelegate: ScreenRecodeModelDelegate?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
     
@@ -29,10 +29,11 @@ class HomeViewController: UIViewController {
     @IBAction func addButtonPressed(_ sender: Any) {
         
         var textfield = UITextField()
-        let item = textfield.text!
+        
         
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
         let action = UIAlertAction(title: "追加", style: .default) { (action) in
+            let item = textfield.text!
             self.screenRecodeModelDelegate?.addNewTask(of: item)
             }
         
@@ -40,7 +41,6 @@ class HomeViewController: UIViewController {
             alertTextfield.placeholder = "新しいタスクを記入"
             textfield = alertTextfield
         }
-    
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
