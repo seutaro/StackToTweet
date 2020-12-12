@@ -75,14 +75,28 @@ class ScreenRecodeModel {
 
 //MARK: - ScreenRecodeModelDelegate
 
-//extension ScreenRecodeModel: ScreenRecodeModelDelegate {
-//    func addNewTaskItem() {
-//        <#code#>
-//    }
-//
-//    func deleteTaskItem() {
-//        <#code#>
-//    }
-//
-//
-//}
+extension ScreenRecodeModel: ScreenRecodeModelDelegate {
+    
+    func addNewTask(of item: String) {
+        guard let category = currentDisplayCategory else {
+            //アラートで”カテゴリを追加してください”
+            print("カテゴリを追加してください")
+            return
+        }
+        
+        do {
+            try self.realm.write {
+                let newItem = Item()
+                newItem.title = item
+                category.items.append(newItem)
+            }
+        } catch {
+            print("タスクの追加に失敗しました")
+        }
+    }
+
+    func deleteTaskItem() {
+    }
+
+
+}
