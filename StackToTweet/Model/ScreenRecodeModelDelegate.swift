@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-protocol ScreenRecodeModelDelegate {
-    func addNewTask(of item:String)
-    func deleteTaskItem()
-}
+//protocol ScreenRecodeModelDelegate {
+//    func addNewTask(of item:String)
+//    func deleteTaskItem()
+//    func addNewTaskTest()
+//}

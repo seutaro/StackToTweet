@@ -12,10 +12,12 @@ import RealmSwift
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
     
+    @IBOutlet weak var DeleteButton: UIButton!
+    @IBOutlet weak var AddButton: UIButton!
     
-    let realm = try! Realm()
-    let pagingViewController = PagingViewController()
     let recodeModel = ScreenRecodeModel()
+    let pagingViewController = PagingViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,10 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         recodeModel.loadCategories()
         pagingViewController.dataSource = self
         
-        
         addChild(pagingViewController)
         view.addSubview(pagingViewController.view)
         pagingViewController.didMove(toParent: self)
-        
+        self.view.sendSubviewToBack(pagingViewController.view)
         //以下の文で描画処理を定義？ないと描画されない。
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -58,4 +59,58 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
 
+//MARK: - ボタンアクション
+    
+    @IBAction func AddButtonPressed(_ sender: Any) {
+        var textfield = UITextField()
+        
+        let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
+        let action = UIAlertAction(title: "追加", style: .default) { (action) in
+            let item = textfield.text!
+            self.recodeModel.addNewTask(of: item)
+            }
+        
+        alert.addTextField { (alertTextfield) in
+            alertTextfield.placeholder = "新しいタスクを記入"
+            textfield = alertTextfield
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func DeleteButtonPressed(_ sender: Any) {
+    }
+    
+    
 }
+
+//MARK: - ScreenRecodeModelDelegate
+//
+//extension TaskViewController: ScreenRecodeModelDelegate {
+//    func addNewTask(of item: String) {
+//
+//    }
+//
+//    func deleteTaskItem() {
+//
+//    }
+//
+//    func addNewTaskTest() {
+//        var textfield = UITextField()
+//
+//        let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
+//        let action = UIAlertAction(title: "追加", style: .default) { (action) in
+//            let item = textfield.text!
+//            self.screenRecodeModelDelegate?.addNewTask(of: item)
+//            }
+//
+//        alert.addTextField { (alertTextfield) in
+//            alertTextfield.placeholder = "新しいタスクを記入"
+//            textfield = alertTextfield
+//        }
+//        alert.addAction(action)
+//        present(alert, animated: true, completion: nil)
+//    }
+//
+//
+//}

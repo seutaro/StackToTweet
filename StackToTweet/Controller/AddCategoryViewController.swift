@@ -13,7 +13,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     let realm = try! Realm()
     var categories: Results<Category>?
-    
+    let recode = ScreenRecodeModel()
 
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var categoryAddButton: UIButton!
@@ -38,13 +38,15 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     //MARK: - TableView DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories?.count ?? 0
+        let nameOfCategories = recode.CategoriesString
+        return nameOfCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let nameOfCategories = recode.CategoriesString
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
-        cell.textLabel?.text = categories?[indexPath.row].name
+        cell.textLabel?.text = nameOfCategories[indexPath.row]
         
         return cell
     }
