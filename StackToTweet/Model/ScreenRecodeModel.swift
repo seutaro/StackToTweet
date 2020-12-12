@@ -89,6 +89,23 @@ class ScreenRecodeModel {
         doCurrentTableviewReloadData!()
     }
     
+    func deleteTask() {
+        guard let category = currentDisplayCategory else {
+            print("カテゴリがありません")
+            return
+        }
+        
+        do {
+            try realm.write {
+                let Items = category.items.filter("done == true")
+                self.realm.delete(Items)
+            }
+        } catch {
+            print("タスクの削除に失敗しました")
+        }
+        doCurrentTableviewReloadData!()
+    }
+    
 }
 
 //MARK: - ScreenRecodeModelDelegate
