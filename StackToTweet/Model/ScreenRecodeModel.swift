@@ -19,7 +19,6 @@ class ScreenRecodeModel {
     var CategoriesString: [String] = []                 //各カテゴリ名をStringとしてスタック
     
     
-    
     func updateModel() {
         let numberOfCategories = getNumberOfCategories()
         CategoriesString = getArrayOfCategoryStrings(with: numberOfCategories)
@@ -83,7 +82,7 @@ extension ScreenRecodeModel: ScreenRecodeModelDelegate {
             print("カテゴリを追加してください")
             return
         }
-        
+        print(item)
         do {
             try self.realm.write {
                 let newItem = Item()

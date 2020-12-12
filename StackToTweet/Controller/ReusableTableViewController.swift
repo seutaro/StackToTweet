@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate {
+class ReusableTableViewController: UITableViewController {
     
     let realm = try! Realm()
     var Items: Results<Item>?
@@ -108,38 +108,22 @@ class ReusableTableViewController: UITableViewController,HomeViewButtonDelegate 
     
     //MARK: - AddButtonDelegate
     
-    func addNewTaskItem(item: String) {
-        if let currentCategory = category {
-            do {
-                try self.realm.write {
-                    let newItem = Item()
-                    newItem.title = item
-                    currentCategory.items.append(newItem)
-                }
 
-            } catch {
-                print("新しいタスクの追加に失敗しました")
-            }
-        }
-        self.tableView.reloadData()
-    }
-
-
-
-    func deleteTaskItem() {
-        if let currentCategory = category {
-            do {
-                try self.realm.write {
-                    let deletedItems = currentCategory.items.filter("done == true")
-                    self.realm.delete(deletedItems)
-                }
-            } catch {
-                print("タスクの削除に失敗しました")
-            }
-        }
-        tableView.reloadData()
-    }
-    
-
+//
+//    func deleteTaskItem() {
+//        if let currentCategory = category {
+//            do {
+//                try self.realm.write {
+//                    let deletedItems = currentCategory.items.filter("done == true")
+//                    self.realm.delete(deletedItems)
+//                }
+//            } catch {
+//                print("タスクの削除に失敗しました")
+//            }
+//        }
+//        tableView.reloadData()
+//    }
+//
+//
 
 }
