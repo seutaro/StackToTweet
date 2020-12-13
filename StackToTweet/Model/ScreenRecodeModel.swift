@@ -73,7 +73,7 @@ class ScreenRecodeModel {
     
     func addNewTask(of item:String) {
         guard let category = currentDisplayCategory else {
-            print("カテゴリを追加してください")  //delegateでアラートを出しても良い self.recodedelegate.pushalert
+            print("カテゴリを追加してください")  //delegateでtaskviewcontrollerにアラートを出させても良い
             return
         }
         
@@ -104,6 +104,30 @@ class ScreenRecodeModel {
             print("タスクの削除に失敗しました")
         }
         doCurrentTableviewReloadData!()
+    }
+    
+    func addCategory(with name:String) {
+        do {
+            try realm.write {
+                let newCategory = Category()
+                newCategory.name = name
+                realm.add(newCategory)
+            }
+        } catch {
+            //アラートで表示するか
+            print("カテゴリの追加に失敗しました")
+        }
+    }
+    
+    func deleteCategory(for indexPath: IndexPath) {
+        do {
+            try realm.write() {
+                let deletingCategory = categories![indexPath.row]
+                realm.delete(deletingCategory)
+            }
+        } catch {
+            print("カテゴリの削除に失敗しました")
+        }
     }
     
 }
