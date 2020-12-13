@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Parchment
-import RealmSwift
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
     
