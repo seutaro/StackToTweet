@@ -6,10 +6,8 @@
 //
 
 import UIKit
-import Parchment
-import RealmSwift
 
-class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
+class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     let recodeModel = ScreenRecodeModel()
 
@@ -22,7 +20,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
-        
+        categoryTextfield.delegate = self
         recodeModel.loadCategories()
     }
     
@@ -65,8 +63,6 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     //MARK: - ButtonAction
     //textfieldのデリゲートメソッドについて調べて実装
-    @IBAction func categoryTextfieldEditAction(_ sender: Any) {
-    }
     
     @IBAction func categoryAddButtonPressed(_ sender: Any) {
         
@@ -76,6 +72,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
             recodeModel.updateModel()
             categoryTableView.reloadData()
             categoryTextfield.resignFirstResponder()
+            categoryTextfield.text = ""
         } else {
             //アラートでも良い
             print("１文字以上入力してください")
@@ -89,6 +86,35 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         categoryTableView.reloadData()
     }
     
+    //MARK: - TextFieldDelegate
+//
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        return true
+//    }
+//
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        return true
+//    }
     
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if self.categoryTextfield.isFirstResponder {
+//            self.categoryTextfield.resignFirstResponder()
+//        }
+//    }
+    
+    func getFirstResponder(view:UIView) -> UIView? {
+        if view.isFirstResponder {
+            return view
+        }
+        
+        for subView in view.subviews {
+            if let _ = getFirstResponder(view: subView) {
+                return subView
+            }
+        }
+        
+        return nil
+    }
 }
 

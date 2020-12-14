@@ -22,9 +22,6 @@
                                 <color key="tintColor" red="0.28235294119999998" green="0.87361631829999997" blue="0.74467861130000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="categoryTextfieldEditAction:" destination="qDH-hd-weQ" eventType="editingDidEnd" id="slk-se-rKM"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新しいカテゴリを追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-wN-PsO">
                                 <rect key="frame" x="10" y="98" width="304" height="36"/>
