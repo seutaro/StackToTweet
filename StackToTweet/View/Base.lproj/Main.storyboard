@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
                                 <rect key="frame" x="299" y="769" width="85" height="63"/>
                                 <color key="backgroundColor" red="0.10781801489999999" green="0.26238328220000001" blue="0.28235721590000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
@@ -38,11 +38,23 @@
                                     <action selector="DeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8dm-YH-8wF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYg-0a-s24">
+                                <rect key="frame" x="142" y="702" width="130" height="130"/>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <state key="normal" title="TweetButton" image="TweetButton"/>
+                                <connections>
+                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="yrv-8O-Yi1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xYg-0a-s24" firstAttribute="leading" secondItem="siG-gc-ifg" secondAttribute="trailing" constant="27" id="8Gc-tM-lDP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xYg-0a-s24" secondAttribute="bottom" constant="30" id="MPK-Fx-kwk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gXr-92-8dp" secondAttribute="trailing" constant="30" id="dtN-4K-3lh"/>
+                            <constraint firstItem="gXr-92-8dp" firstAttribute="leading" secondItem="xYg-0a-s24" secondAttribute="trailing" constant="27" id="keU-rp-oXI"/>
+                            <constraint firstItem="xYg-0a-s24" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="614" id="qDJ-m8-v6w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gXr-92-8dp" secondAttribute="bottom" constant="30" id="sCM-7g-sIh"/>
                             <constraint firstItem="siG-gc-ifg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xtd-9u-eUZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="siG-gc-ifg" secondAttribute="bottom" constant="30" id="yc3-L0-ax7"/>
@@ -98,11 +110,25 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-RT-9Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="85"/>
+            <point key="canvasLocation" x="1881" y="119"/>
+        </scene>
+        <!--TweetView-->
+        <scene sceneID="QIw-VB-07W">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TweetView" id="Uyi-Kv-Ec3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FQi-sq-2LS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vbu-Vp-FUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="192"/>
         </scene>
     </scenes>
     <resources>
+        <image name="TweetButton" width="256" height="256"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
