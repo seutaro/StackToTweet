@@ -9,6 +9,12 @@ import UIKit
 
 class TweetViewController: UIViewController {
 
+    @IBOutlet weak var tweetButton: UIButton!
+    @IBOutlet weak var tweetTableView: UITableView!
+    
+    var recedeModel: ScreenRecodeModel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -3,7 +3,9 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,15 +16,62 @@
                     <view key="view" contentMode="scaleToFill" id="nvF-e6-aRI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-T5-orG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="565"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" id="BK1-Zl-1E0">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BK1-Zl-1E0" id="EtC-ZJ-Xpq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zac-AN-QqQ">
+                                <rect key="frame" x="58" y="703" width="298" height="51"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="6Wl-za-4To"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="ツイートする"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sZ9-C8-RKe"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.485138132" blue="0.25800502650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jOa-T5-orG" firstAttribute="top" secondItem="sZ9-C8-RKe" secondAttribute="top" id="5wV-0E-dQH"/>
+                            <constraint firstItem="zac-AN-QqQ" firstAttribute="top" secondItem="jOa-T5-orG" secondAttribute="bottom" constant="50" id="APS-wX-4yV"/>
+                            <constraint firstItem="sZ9-C8-RKe" firstAttribute="trailing" secondItem="zac-AN-QqQ" secondAttribute="trailing" constant="58" id="JeT-xq-fe3"/>
+                            <constraint firstItem="sZ9-C8-RKe" firstAttribute="bottom" secondItem="zac-AN-QqQ" secondAttribute="bottom" constant="108" id="N5n-Jv-NVr"/>
+                            <constraint firstItem="jOa-T5-orG" firstAttribute="leading" secondItem="sZ9-C8-RKe" secondAttribute="leading" id="WMF-80-bcS"/>
+                            <constraint firstItem="zac-AN-QqQ" firstAttribute="leading" secondItem="sZ9-C8-RKe" secondAttribute="leading" constant="58" id="fsw-W8-VGr"/>
+                            <constraint firstItem="jOa-T5-orG" firstAttribute="trailing" secondItem="sZ9-C8-RKe" secondAttribute="trailing" id="xIM-kF-M1w"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="tweetButton" destination="zac-AN-QqQ" id="gai-LR-mVw"/>
+                        <outlet property="tweetTableView" destination="jOa-T5-orG" id="mjy-bL-gCB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdN-T2-P97" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290" y="74"/>
+            <point key="canvasLocation" x="289.85507246376812" y="73.660714285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
