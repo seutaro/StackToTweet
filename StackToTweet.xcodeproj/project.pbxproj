@@ -22,6 +22,8 @@
 		EA80AA5A2573C7A900E2556D /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80AA582573C7A900E2556D /* ReusableCell.swift */; };
 		EA80AA5B2573C7A900E2556D /* ReusableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA80AA592573C7A900E2556D /* ReusableCell.xib */; };
 		EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97949825694B97004A1924 /* AddCategoryView.storyboard */; };
+		EA9936642588ECDB00603B70 /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9936632588ECDB00603B70 /* TweetViewController.swift */; };
+		EA9936692588ED1200603B70 /* TweetView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9936682588ED1200603B70 /* TweetView.storyboard */; };
 		EAC2AA2F2561169500C0B48B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA2E2561169500C0B48B /* Item.swift */; };
 		EAC2AA37256116A600C0B48B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA36256116A600C0B48B /* Category.swift */; };
 		EAC2AA4825611AB800C0B48B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2AA4725611AB800C0B48B /* TaskViewController.swift */; };
@@ -74,6 +76,8 @@
 		EA80AA582573C7A900E2556D /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
 		EA80AA592573C7A900E2556D /* ReusableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReusableCell.xib; sourceTree = "<group>"; };
 		EA97949825694B97004A1924 /* AddCategoryView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategoryView.storyboard; sourceTree = "<group>"; };
+		EA9936632588ECDB00603B70 /* TweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TweetViewController.swift; path = StackToTweet/Controller/TweetViewController.swift; sourceTree = SOURCE_ROOT; };
+		EA9936682588ED1200603B70 /* TweetView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TweetView.storyboard; sourceTree = "<group>"; };
 		EAC2AA2E2561169500C0B48B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EAC2AA36256116A600C0B48B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EAC2AA4725611AB800C0B48B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				EA80AA582573C7A900E2556D /* ReusableCell.swift */,
 				EA80AA592573C7A900E2556D /* ReusableCell.xib */,
 				EA97949825694B97004A1924 /* AddCategoryView.storyboard */,
+				EA9936682588ED1200603B70 /* TweetView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 		EA7165E7255024C200448F1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA9936632588ECDB00603B70 /* TweetViewController.swift */,
 				EA7165B6254EBDB100448F1C /* AddCategoryViewController.swift */,
 				EAC2AA4725611AB800C0B48B /* TaskViewController.swift */,
 				EAC2AA4C25611B1F00C0B48B /* ReusableTableViewController.swift */,
@@ -330,6 +336,7 @@
 				EA7165BF254EBDB200448F1C /* LaunchScreen.storyboard in Resources */,
 				EA7165BC254EBDB200448F1C /* Assets.xcassets in Resources */,
 				EA7165BA254EBDB100448F1C /* Main.storyboard in Resources */,
+				EA9936692588ED1200603B70 /* TweetView.storyboard in Resources */,
 				EA80AA5B2573C7A900E2556D /* ReusableCell.xib in Resources */,
 				EA97949925694B97004A1924 /* AddCategoryView.storyboard in Resources */,
 			);
@@ -462,6 +469,7 @@
 				EAC2AA2F2561169500C0B48B /* Item.swift in Sources */,
 				EAC2AA37256116A600C0B48B /* Category.swift in Sources */,
 				EA7165B7254EBDB100448F1C /* AddCategoryViewController.swift in Sources */,
+				EA9936642588ECDB00603B70 /* TweetViewController.swift in Sources */,
 				EA7165B3254EBDB100448F1C /* AppDelegate.swift in Sources */,
 				EAC2AA4D25611B1F00C0B48B /* ReusableTableViewController.swift in Sources */,
 				EA67220925825855002594F3 /* ScreenRecodeModelDelegate.swift in Sources */,
