@@ -9,12 +9,15 @@ import UIKit
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
-    let recodeModel = ScreenRecodeModel()
-
+//    var recodeModel: ScreenRecodeModel
+    weak var recodeModel: ScreenRecodeModel!
+    
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var categoryAddButton: UIButton!
     @IBOutlet weak var categoryTableView: UITableView!
     
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

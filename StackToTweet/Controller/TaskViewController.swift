@@ -41,6 +41,16 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         recodeModel.updateModel()
         pagingViewController.reloadData()
     }
+    
+    
+    //カテゴリ追加画面遷移時にrecodeModelをAddCategoryVCに渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toAddCategory" {
+            let addCategoryVC = segue.destination as? AddCategoryViewController
+            addCategoryVC?.recodeModel = self.recodeModel
+        }
+    }
 
     //MARK: - PagingViewControllerDatasSource
     

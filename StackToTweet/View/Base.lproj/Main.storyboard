@@ -53,7 +53,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="dXA-9L-9UY" kind="show" id="vqF-FH-mMn"/>
+                                <segue destination="dXA-9L-9UY" kind="show" identifier="toAddCategory" id="vqF-FH-mMn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -98,7 +98,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-RT-9Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1803" y="126"/>
+            <point key="canvasLocation" x="1890" y="85"/>
         </scene>
     </scenes>
     <resources>
