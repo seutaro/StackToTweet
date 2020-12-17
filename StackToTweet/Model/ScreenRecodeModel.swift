@@ -123,6 +123,8 @@ class ScreenRecodeModel {
         do {
             try realm.write() {
                 let deletingCategory = categories![indexPath.row]
+                let ItemInDeleteCategory = deletingCategory.items
+                realm.delete(ItemInDeleteCategory)
                 realm.delete(deletingCategory)
             }
         } catch {

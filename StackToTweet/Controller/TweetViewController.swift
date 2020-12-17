@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
@@ -15,6 +16,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var tweetTableView: UITableView!
     
     var recedeModel: ScreenRecodeModel!
+    let realm = try! Realm()
     
     
     override func viewDidLoad() {
@@ -28,14 +30,19 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func pressedTweetButton(_ sender: Any) {
-        let category = "swift"
-        let test = ["test","teすと"]
-        let text = getTweetText(from: category, items: test)
-        let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        if let encodedText = encodedText,
-            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+//        let category = "swift"
+//        let test = ["test","teすと"]
+//        let text = getTweetText(from: category, items: test)
+//        let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//        if let encodedText = encodedText,
+//            let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        }
+        
+        
+        let predicate = NSPredicate(format: "done = true")
+        let filtered = realm.objects(Item.self).filter(predicate)
+        print(filtered)
     }
     
     func getTweetText(from category: String,items:[String]) -> String {
