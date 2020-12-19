@@ -26,9 +26,11 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         tweetTableView.delegate = self
         tweetTableView.allowsMultipleSelectionDuringEditing = true
         tweetTableView.isEditing = true
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        recedeModel.updateCategoriesWithTweetItems()
+    }
     
     
     
@@ -70,61 +72,70 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     //MARK: - tableviewDatasource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let numberOfSection = recedeModel.CategoriesString.count
+        let numberOfSection = recedeModel.CategoriesWtihTweetItems.count
         return numberOfSection
     }
      
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let categories = recedeModel.categories {
-            let titleForSection = categories[section].name
-            return titleForSection
-        } else {
-            return "カテゴリなし"
-        }
-        
+        let category = recedeModel.CategoriesWtihTweetItems[section]
+        let titleForSection = category.name
+        return titleForSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let categories = recedeModel.categories {
-            let items = categories[section].items
-            let numberOfRows = items.filter("done = true").count
-            return numberOfRows
-        } else {
-            return 0
-        }
+        let category = recedeModel.CategoriesWtihTweetItems[section]
+        let items = category.items
+        let numberOfRows = items.count
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath)
-        if let categories = recedeModel.categories {
-            let items = categories[indexPath.section].items
-            let doneItems = items.filter("done = true")
-            let doneItem = doneItems[indexPath.row]
-            cell.textLabel?.text = doneItem.title
-            cell.accessoryType = doneItem.tweet ? .checkmark : .none
-        }
+        
+        let tweetableCategories = recedeModel.CategoriesWtihTweetItems
+        let categoryWithTweetItems = tweetableCategories[indexPath.section]
+        let doneItems = recedeModel.getDoneItemList(from: categoryWithTweetItems)
+        let tweetItem = doneItems[indexPath.row]
+        cell.textLabel?.text = tweetItem.title
+        cell.isEditing = tweetItem.tweet
+//        if let categories = recedeModel.categories {
+//            let items = categories[indexPath.section].items
+//            let doneItems = items.filter("done = true")
+//            let doneItem = doneItems[indexPath.row]
+//            cell.textLabel?.text = doneItem.title
+////            cell.accessoryType = doneItem.tweet ? .checkmark : .none
+//            cell.isEditing = doneItem.tweet
+//        }
         return cell
     }
     
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let categories = recedeModel.categories {
-            let items = categories[indexPath.section].items
-            let doneItems = items.filter("done = true")
-            let item = doneItems[indexPath.row]
-            do {
-                try realm.write {
-                    item.tweet = !item.tweet
-                }
-            } catch {
-                print("ツイートのフラグ変更に失敗しました")
+        let categories = recedeModel.CategoriesWtihTweetItems
+        let category = categories[indexPath.section]
+        let doneItems = recedeModel.getDoneItemList(from: category)
+        let item = doneItems[indexPath.row]
+        do {
+            try realm.write {
+                item.tweet = !item.tweet
             }
+        } catch {
+            print("ツイートのフラグ変更に失敗しました")
         }
-        tableView.reloadData()
-        tableView.deselectRow(at: indexPath, animated: true)
+//        if let categories = recedeModel.categories {
+//            let items = categories[indexPath.section].items
+//            let doneItems = items.filter("done = true")
+//            let item = doneItems[indexPath.row]
+//            do {
+//                try realm.write {
+//                    item.tweet = !item.tweet
+//                }
+//            } catch {
+//                print("ツイートのフラグ変更に失敗しました")
+//            }
+//        }
     }
 
 

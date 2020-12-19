@@ -18,7 +18,7 @@ class ScreenRecodeModel {
     var doCurrentTableviewReloadData: (() -> Void)?     //現在表示されているtableviewのtableview.reloadDataを保持する
     var PagingVCs: [UIViewController] = []              //カテゴリごとのtableViewをスタックする
     var CategoriesString: [String] = []                 //各カテゴリ名をStringとしてスタック
-    
+    var CategoriesWtihTweetItems: [Category] = []      //tweet = trueであるItemを含むカテゴリの値をスタック
     
     func updateModel() {
         let numberOfCategories = getNumberOfCategories()
@@ -132,7 +132,36 @@ class ScreenRecodeModel {
         }
     }
     
-
+    func getDoneItemList(from category: Category) -> Results<Item> {
+        let items = category.items.filter("done == true")
+        return items
+    }
+    
+    func getTweetCategories() -> [Category] {
+        var tweetCategoryArray: [Category] = []
+        if let Categories = categories {
+            for category in Categories {
+               let items = getDoneItemList(from: category)
+                if items.count != 0 {
+                    tweetCategoryArray.append(category)
+                }
+            }
+        }
+        return tweetCategoryArray
+    }
+    
+    func updateCategoriesWithTweetItems() {
+        let tweetCategories = getTweetCategories()
+        if tweetCategories.count == 0 {
+            let defaultCategory = Category()
+            defaultCategory.name = "ツイートできるタスクがありません"
+            CategoriesWtihTweetItems.append(defaultCategory)
+        } else {
+            CategoriesWtihTweetItems = tweetCategories
+        }
+        
+    }
+    
     
 }
 
