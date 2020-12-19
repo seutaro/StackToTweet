@@ -49,6 +49,9 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         if segue.identifier == "toAddCategory" {
             let addCategoryVC = segue.destination as? AddCategoryViewController
             addCategoryVC?.recodeModel = self.recodeModel
+        } else if segue.identifier == "toTweetView" {
+            let tweetVC = segue.destination as? TweetViewController
+            tweetVC?.recedeModel = self.recodeModel
         }
     }
 
@@ -77,7 +80,12 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
         let action = UIAlertAction(title: "追加", style: .default) { (action) in
             let item = textfield.text!
-            self.recodeModel.addNewTask(of: item)
+            if item == "" {
+                print("1文字以上入力してください")
+            } else {
+                self.recodeModel.addNewTask(of: item)
+            }
+            
             }
         
         alert.addTextField { (alertTextfield) in
