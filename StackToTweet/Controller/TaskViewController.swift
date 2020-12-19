@@ -80,7 +80,12 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
         let action = UIAlertAction(title: "追加", style: .default) { (action) in
             let item = textfield.text!
-            self.recodeModel.addNewTask(of: item)
+            if item == "" {
+                print("1文字以上入力してください")
+            } else {
+                self.recodeModel.addNewTask(of: item)
+            }
+            
             }
         
         alert.addTextField { (alertTextfield) in

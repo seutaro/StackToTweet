@@ -24,6 +24,8 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         tweetTableView.dataSource = self
         tweetTableView.delegate = self
+        tweetTableView.allowsMultipleSelectionDuringEditing = true
+        tweetTableView.isEditing = true
         
     }
     
