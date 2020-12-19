@@ -137,6 +137,11 @@ class ScreenRecodeModel {
         return items
     }
     
+    func getTweetableItemList(from category: Category) -> Results<Item> {
+        let items = category.items.filter("tweet == true")
+        return items
+    }
+    
     func getTweetCategories() -> [Category] {
         var tweetCategoryArray: [Category] = []
         if let Categories = categories {
@@ -157,41 +162,47 @@ class ScreenRecodeModel {
             defaultCategory.name = "ツイートできるタスクがありません"
             CategoriesWtihTweetItems.append(defaultCategory)
         } else {
-            CategoriesWtihTweetItems = tweetCategories
         }
+            CategoriesWtihTweetItems = tweetCategories
         
     }
     
+    func getTweetItemText(of category: Category) -> String {
+        let tweetableItems = getTweetableItemList(from: category)
+        var tweet = ""
+        
+        for item in tweetableItems {
+            tweet = tweet + "- \(item.title)\n"
+        }
+        return tweet
+    }
+    
+    func getTweetCategoryText(with category: Category) -> String {
+        
+        var tweet = "【#\(category.name)】\n"
+        let itemsText = getTweetItemText(of: category)
+        
+        if itemsText != "" {
+            tweet = tweet + "\(itemsText)\n"
+        } else {
+            tweet = ""
+        }
+        
+        return tweet
+    }
+    
+    func getTweetText() -> String {
+        let tweetCategories = CategoriesWtihTweetItems
+        
+        var tweet = """
+                    #今日の積み上げ\n
+                    """
+        
+        for category in tweetCategories {
+            let textByCategory = getTweetCategoryText(with: category)
+            tweet = tweet + "\(textByCategory)"
+        }
+        return tweet
+    }
     
 }
-
-//MARK: - ScreenRecodeModelDelegate
-
-//extension ScreenRecodeModel: ScreenRecodeModelDelegate {
-//    func addNewTaskTest() {
-//    }
-//    
-//    
-//    func addNewTask(of item: String) {
-//        guard let category = currentDisplayCategory else {
-//            //アラートで”カテゴリを追加してください”
-//            print("カテゴリを追加してください")
-//            return
-//        }
-//        print(item)
-//        do {
-//            try self.realm.write {
-//                let newItem = Item()
-//                newItem.title = item
-//                category.items.append(newItem)
-//            }
-//        } catch {
-//            print("タスクの追加に失敗しました")
-//        }
-//    }
-//
-//    func deleteTaskItem() {
-//    }
-//
-//
-//}
