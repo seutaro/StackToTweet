@@ -172,7 +172,7 @@ class ScreenRecodeModel {
         var tweet = ""
         
         for item in tweetableItems {
-            tweet = tweet + "\(item.title)\n"
+            tweet = tweet + "- \(item.title)\n"
         }
         return tweet
     }
@@ -182,7 +182,11 @@ class ScreenRecodeModel {
         var tweet = "【#\(category.name)】\n"
         let itemsText = getTweetItemText(of: category)
         
-        tweet = tweet + "-\(itemsText)\n"
+        if itemsText != "" {
+            tweet = tweet + "\(itemsText)\n"
+        } else {
+            tweet = ""
+        }
         
         return tweet
     }
