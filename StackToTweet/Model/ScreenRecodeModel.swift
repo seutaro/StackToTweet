@@ -137,6 +137,11 @@ class ScreenRecodeModel {
         return items
     }
     
+    func getTweetableItemList(from category: Category) -> Results<Item> {
+        let items = category.items.filter("tweet == true")
+        return items
+    }
+    
     func getTweetCategories() -> [Category] {
         var tweetCategoryArray: [Category] = []
         if let Categories = categories {
@@ -157,11 +162,44 @@ class ScreenRecodeModel {
             defaultCategory.name = "ツイートできるタスクがありません"
             CategoriesWtihTweetItems.append(defaultCategory)
         } else {
-            CategoriesWtihTweetItems = tweetCategories
         }
+            CategoriesWtihTweetItems = tweetCategories
         
     }
     
+    func getTweetItemText(of category: Category) -> String {
+        let tweetableItems = getTweetableItemList(from: category)
+        var tweet = ""
+        
+        for item in tweetableItems {
+            tweet = tweet + "\(item.title)\n"
+        }
+        return tweet
+    }
+    
+    func getTweetCategoryText(with category: Category) -> String {
+        
+        var tweet = "【#\(category.name)】\n"
+        let itemsText = getTweetItemText(of: category)
+        
+        tweet = tweet + "-\(itemsText)\n"
+        
+        return tweet
+    }
+    
+    func getTweetText() -> String {
+        let tweetCategories = CategoriesWtihTweetItems
+        
+        var tweet = """
+                    #今日の積み上げ\n
+                    """
+        
+        for category in tweetCategories {
+            let textByCategory = getTweetCategoryText(with: category)
+            tweet = tweet + "\(textByCategory)"
+        }
+        return tweet
+    }
     
 }
 
