@@ -23,6 +23,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         
         tweetTableView.dataSource = self
+        tweetTableView.delegate = self
         
     }
     
@@ -107,7 +108,22 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: - UITableViewDelegate
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let categories = recedeModel.categories {
+            let items = categories[indexPath.section].items
+            let doneItems = items.filter("done = true")
+            let item = doneItems[indexPath.row]
+            do {
+                try realm.write {
+                    item.tweet = !item.tweet
+                }
+            } catch {
+                print("ツイートのフラグ変更に失敗しました")
+            }
+        }
+        tableView.reloadData()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
 
 }

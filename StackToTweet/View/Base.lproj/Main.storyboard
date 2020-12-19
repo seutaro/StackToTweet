@@ -49,6 +49,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xYg-0a-s24" firstAttribute="leading" secondItem="siG-gc-ifg" secondAttribute="trailing" constant="27" id="8Gc-tM-lDP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xYg-0a-s24" secondAttribute="bottom" constant="30" id="MPK-Fx-kwk"/>
