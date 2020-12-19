@@ -132,6 +132,8 @@ class ScreenRecodeModel {
         }
     }
     
+
+    
 }
 
 //MARK: - ScreenRecodeModelDelegate

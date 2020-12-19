@@ -40,9 +40,13 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        }
         
         
-        let predicate = NSPredicate(format: "done = true")
+        let predicate = NSPredicate(format: "done = false")
         let filtered = realm.objects(Item.self).filter(predicate)
-        print(filtered)
+        
+        for item in filtered {
+            let test = item.parentCategory
+            print(test)
+        }
     }
     
     func getTweetText(from category: String,items:[String]) -> String {
@@ -62,14 +66,48 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: - tableviewDatasource
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        let numberOfSection = recedeModel.CategoriesString.count
+        return numberOfSection
+    }
+     
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let categories = recedeModel.categories {
+            let titleForSection = categories[section].name
+            return titleForSection
+        } else {
+            return "カテゴリなし"
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if let categories = recedeModel.categories {
+            let items = categories[section].items
+            let numberOfRows = items.filter("done = true").count
+            return numberOfRows
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+
+        let cell = tweetTableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath)
+        if let categories = recedeModel.categories {
+            let items = categories[indexPath.section].items
+            let doneItems = items.filter("done = true")
+            let doneItem = doneItems[indexPath.row]
+            cell.textLabel?.text = doneItem.title
+            cell.accessoryType = doneItem.tweet ? .checkmark : .none
+        }
         return cell
     }
     
+    //MARK: - UITableViewDelegate
+    
+    
+
 
 }
