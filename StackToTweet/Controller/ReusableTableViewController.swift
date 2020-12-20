@@ -30,6 +30,7 @@ class ReusableTableViewController: UITableViewController {
         super.viewDidLoad()
         loadItems()
         tableView.register(UINib(nibName: "ReusableCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
