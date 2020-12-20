@@ -24,6 +24,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         tweetTableView.dataSource = self
         tweetTableView.delegate = self
+        tweetTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +50,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         } catch {
             print("ツイート済みのタスクの削除に失敗しました。")
         }
+        recedeModel.updateCategoriesWithTweetItems()
         tweetTableView.reloadData()
     }
     
