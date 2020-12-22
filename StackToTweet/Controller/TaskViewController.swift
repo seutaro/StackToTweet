@@ -29,6 +29,13 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         view.addSubview(pagingViewController.view)
         pagingViewController.didMove(toParent: self)
         self.view.sendSubviewToBack(pagingViewController.view)
+        
+        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
+        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
+        
+        
+        
+        
         //以下の文で描画処理を定義？ないと描画されない。
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
