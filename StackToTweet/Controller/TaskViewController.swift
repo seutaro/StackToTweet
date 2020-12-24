@@ -14,6 +14,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     @IBOutlet weak var DeleteButton: UIButton!
     @IBOutlet weak var AddButton: UIButton!
+    @IBOutlet weak var tweetButton: UIButton!
     
     let recodeModel = ScreenRecodeModel()
     let pagingViewController = PagingViewController()
@@ -21,6 +22,12 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DeleteButton.layer.cornerRadius = 50.0
+        AddButton.layer.cornerRadius = 50.0
+        tweetButton.layer.cornerRadius = 50.0
+        
+        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()
         pagingViewController.dataSource = self

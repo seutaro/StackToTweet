@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tweet View Controller-->
+        <!--tweet選択-->
         <scene sceneID="dOG-vC-IwA">
             <objects>
-                <viewController id="EWM-EG-UvF" customClass="TweetViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="tweet選択" id="EWM-EG-UvF" customClass="TweetViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nvF-e6-aRI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
     </scenes>
     <resources>
         <namedColor name="Custom hard">
-            <color red="0.98799997568130493" green="0.63899999856948853" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.87800002098083496" green="0.32199999690055847" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TweetButtonColor">
             <color red="0.7369999885559082" green="0.90200001001358032" blue="0.92199999094009399" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>

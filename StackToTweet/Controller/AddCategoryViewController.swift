@@ -20,6 +20,7 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryAddButton.layer.cornerRadius = 15.0
         
         categoryTableView.dataSource = self
         categoryTableView.delegate = self

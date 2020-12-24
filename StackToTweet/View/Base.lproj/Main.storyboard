@@ -77,6 +77,7 @@
                     <connections>
                         <outlet property="AddButton" destination="gXr-92-8dp" id="6aC-kZ-c6j"/>
                         <outlet property="DeleteButton" destination="siG-gc-ifg" id="bAz-nv-CaF"/>
+                        <outlet property="tweetButton" destination="xYg-0a-s24" id="7e9-wB-MHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
