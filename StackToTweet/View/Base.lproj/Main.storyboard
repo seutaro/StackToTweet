@@ -42,7 +42,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
                                         <rect key="frame" x="282" y="50" width="132" height="100"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" image="Add button-3">
+                                        <state key="normal" image="addbutton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -129,8 +129,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add button-3" width="100" height="100"/>
         <image name="TweetButton" width="150" height="150"/>
+        <image name="addbutton" width="100" height="100"/>
         <image name="deletebutton" width="100" height="100"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="Custm medium">

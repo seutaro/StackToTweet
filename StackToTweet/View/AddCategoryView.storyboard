@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qDH-hd-weQ">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="AddCategoryView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qDH-hd-weQ" customClass="AddCategoryViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DGA-ej-u22">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="カテゴリ名を入力" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="lHB-Rw-sYn">
-                                <rect key="frame" x="0.0" y="100" width="375" height="47.5"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="47.5"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" name="Custom hard"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -26,27 +26,27 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新しいカテゴリを追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-wN-PsO">
-                                <rect key="frame" x="10" y="54" width="265" height="36"/>
+                                <rect key="frame" x="10" y="98" width="304" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-PQ-Pi8">
-                                <rect key="frame" x="0.0" y="249.5" width="375" height="417.5"/>
+                                <rect key="frame" x="0.0" y="293.5" width="414" height="568.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="JPU-TV-hLZ">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JPU-TV-hLZ" id="qWN-Fh-4bQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmm-hA-lxC">
-                                <rect key="frame" x="161" y="182.5" width="53" height="44"/>
+                                <rect key="frame" x="45" y="226.5" width="324" height="44"/>
                                 <color key="backgroundColor" name="Custm medium"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="tintColor" name="Custom hard"/>
@@ -69,7 +69,8 @@
                             <constraint firstItem="LLZ-wN-PsO" firstAttribute="top" secondItem="ewy-fg-feB" secondAttribute="top" constant="10" id="I9H-kN-0xY"/>
                             <constraint firstItem="lHB-Rw-sYn" firstAttribute="top" secondItem="LLZ-wN-PsO" secondAttribute="bottom" constant="10" id="SZt-JE-Itk"/>
                             <constraint firstItem="lHB-Rw-sYn" firstAttribute="trailing" secondItem="ewy-fg-feB" secondAttribute="trailing" id="T9p-dN-iaW"/>
-                            <constraint firstItem="fmm-hA-lxC" firstAttribute="centerX" secondItem="DGA-ej-u22" secondAttribute="centerX" id="TS9-8u-8Zd"/>
+                            <constraint firstItem="fmm-hA-lxC" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" constant="45" id="aZX-Po-MPX"/>
+                            <constraint firstItem="ewy-fg-feB" firstAttribute="trailing" secondItem="fmm-hA-lxC" secondAttribute="trailing" constant="45" id="dWV-VE-CDl"/>
                             <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="trailing" secondItem="ewy-fg-feB" secondAttribute="trailing" id="ngM-Tc-b5M"/>
                             <constraint firstItem="lHB-Rw-sYn" firstAttribute="leading" secondItem="ewy-fg-feB" secondAttribute="leading" id="puh-Ch-5BF"/>
                             <constraint firstItem="WfQ-PQ-Pi8" firstAttribute="bottom" secondItem="ewy-fg-feB" secondAttribute="bottom" id="rGZ-WS-fAI"/>
