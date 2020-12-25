@@ -14,6 +14,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     @IBOutlet weak var DeleteButton: UIButton!
     @IBOutlet weak var AddButton: UIButton!
+    @IBOutlet weak var tweetButton: UIButton!
     
     let recodeModel = ScreenRecodeModel()
     let pagingViewController = PagingViewController()
@@ -21,6 +22,12 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DeleteButton.layer.cornerRadius = 50.0
+        AddButton.layer.cornerRadius = 50.0
+        tweetButton.layer.cornerRadius = 50.0
+        
+        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()
         pagingViewController.dataSource = self
@@ -29,6 +36,13 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         view.addSubview(pagingViewController.view)
         pagingViewController.didMove(toParent: self)
         self.view.sendSubviewToBack(pagingViewController.view)
+        
+        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
+        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
+        
+        
+        
+        
         //以下の文で描画処理を定義？ないと描画されない。
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tweet View Controller-->
+        <!--tweet選択-->
         <scene sceneID="dOG-vC-IwA">
             <objects>
-                <viewController id="EWM-EG-UvF" customClass="TweetViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="tweet選択" id="EWM-EG-UvF" customClass="TweetViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nvF-e6-aRI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,6 +20,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-T5-orG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="565"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" name="Custom hard"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" id="BK1-Zl-1E0">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -34,7 +35,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zac-AN-QqQ">
                                 <rect key="frame" x="58" y="703" width="298" height="51"/>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="backgroundColor" name="TweetButtonColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="6Wl-za-4To"/>
                                 </constraints>
@@ -71,8 +72,11 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Custom hard">
+            <color red="0.87800002098083496" green="0.32199999690055847" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TweetButtonColor">
+            <color red="0.7369999885559082" green="0.90200001001358032" blue="0.92199999094009399" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
