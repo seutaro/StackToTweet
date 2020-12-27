@@ -12,21 +12,31 @@ import RealmSwift
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
     
-    @IBOutlet weak var DeleteButton: UIButton!
-    @IBOutlet weak var AddButton: UIButton!
-    @IBOutlet weak var tweetButton: UIButton!
+    @IBOutlet weak var manuButton: UIButton!
+    
+    let imageOfAddButton = UIImage(named: "addButton")
+    let imageOfDeleteButton = UIImage(named: "deleteButton")
+    let imageOfTweetButton = UIImage(named: "TweetButton")
     
     let recodeModel = ScreenRecodeModel()
     let pagingViewController = PagingViewController()
-    
+    let customButton = CustomButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DeleteButton.layer.cornerRadius = 50.0
-        AddButton.layer.cornerRadius = 50.0
-        tweetButton.layer.cornerRadius = 50.0
+        customButton.manuButton = self.manuButton
+        customButton.manuPosition = self.manuButton.layer.position
+        self.manuButton.addTarget(customButton, action: #selector(customButton.movementWhenManuButtonTapped), for: .touchUpInside)
         
+        customButton.addButton.setImage(imageOfAddButton, for: .normal)
+        customButton.deleteButton.setImage(imageOfDeleteButton, for: .normal)
+        customButton.tweetButton.setImage(imageOfTweetButton, for: .normal)
+        
+        self.view.addSubview(customButton)
+        
+        
+
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()

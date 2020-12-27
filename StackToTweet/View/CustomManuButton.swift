@@ -20,7 +20,7 @@ class CustomButton: UIView {
     
     var manuPosition: CGPoint!
     
-    private var tapped: Bool = false
+    private var manuIsTapped: Bool = false
     
     func getButtonPositon(angle: CGFloat, radius: CGFloat) -> CGPoint {
         
@@ -66,17 +66,20 @@ class CustomButton: UIView {
             self.manuButton.transform = .identity
         }, completion: nil)
         
-        if tapped == false {
+        if manuIsTapped == false {
 
             setButtonStatus()
+            
             UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+                
                 self.addButton.layer.position = self.getButtonPositon(angle: -90, radius: 150)
                 self.deleteButton.layer.position = self.getButtonPositon(angle: -180, radius: 150)
                 self.tweetButton.layer.position = self.getButtonPositon(angle: -135, radius: 150)
-                print(self.addButton.layer.position)
+                
             }, completion:{ [self]_ in
-                tapped = !tapped
+                manuIsTapped = !manuIsTapped
             })
+            
             self.manuButton.setImage(closeImage, for: .normal)
             
         } else {
@@ -90,7 +93,7 @@ class CustomButton: UIView {
                 
             }, completion: {_ in
                 
-                self.tapped = !self.tapped
+                self.manuIsTapped = !self.manuIsTapped
                 self.addButton.isHidden = true
                 self.deleteButton.isHidden = true
                 self.tweetButton.isHidden = true
