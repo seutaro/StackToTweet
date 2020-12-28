@@ -17,8 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKp-qf-InU">
-                                <rect key="frame" x="304" y="772" width="90" height="90"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
+                                <rect key="frame" x="254" y="696" width="150" height="150"/>
+                                <state key="normal" image="TweetButton"/>
+                                <connections>
+                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
+                                <rect key="frame" x="279" y="727" width="100" height="100"/>
+                                <state key="normal" image="addButton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
+                                <rect key="frame" x="279" y="727" width="100" height="100"/>
+                                <state key="normal" image="deleteButton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
+                                <rect key="frame" x="289" y="737" width="90" height="90"/>
+                                <state key="normal" image="close"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
+                                <rect key="frame" x="289" y="737" width="90" height="90"/>
                                 <state key="normal" image="manuButton"/>
                             </button>
                         </subviews>
@@ -26,8 +45,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uKp-qf-InU" secondAttribute="trailing" constant="20" id="0nB-Us-UR3"/>
-                            <constraint firstItem="uKp-qf-InU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Cj9-ZF-ZnC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
+                            <constraint firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="50" id="Mbt-17-PpI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
+                            <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="10" id="abO-Iz-a24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sws-uZ-g8d" secondAttribute="trailing" constant="35" id="eAU-yx-m8d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKN-P9-ZGu" secondAttribute="bottom" constant="35" id="fOW-N7-tfx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
@@ -40,7 +67,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="manuButton" destination="uKp-qf-InU" id="Qk7-qE-go5"/>
+                        <outlet property="addButton" destination="sws-uZ-g8d" id="PDq-eu-CXg"/>
+                        <outlet property="closeButton" destination="74d-zc-Wwq" id="0uk-Ma-biW"/>
+                        <outlet property="deleteButton" destination="eKN-P9-ZGu" id="Lop-Qs-HUe"/>
+                        <outlet property="manuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
+                        <outlet property="tweetButton" destination="iGe-Xc-ve2" id="Gaq-6A-i85"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -93,6 +124,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TweetButton" width="150" height="150"/>
+        <image name="addButton" width="100" height="100"/>
+        <image name="close" width="90" height="90"/>
+        <image name="deleteButton" width="100" height="100"/>
         <image name="manuButton" width="90" height="90"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="Custm medium">

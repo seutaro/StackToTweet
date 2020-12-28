@@ -12,34 +12,26 @@ import RealmSwift
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
     
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var manuButton: UIButton!
-    
-    let imageOfAddButton = UIImage(named: "addButton")
-    let imageOfDeleteButton = UIImage(named: "deleteButton")
-    let imageOfTweetButton = UIImage(named: "TweetButton")
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var tweetButton: UIButton!
     
     let recodeModel = ScreenRecodeModel()
     let pagingViewController = PagingViewController()
-    let customButton = CustomButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        customButton.manuButton = self.manuButton
-        customButton.manuPosition = self.manuButton.layer.position
-        self.manuButton.addTarget(customButton, action: #selector(customButton.movementWhenManuButtonTapped), for: .touchUpInside)
-        
-        customButton.addButton.setImage(imageOfAddButton, for: .normal)
-        customButton.deleteButton.setImage(imageOfDeleteButton, for: .normal)
-        customButton.tweetButton.setImage(imageOfTweetButton, for: .normal)
-        
-        self.view.addSubview(customButton)
-        
+        setUpButton()
         
 
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()
+        
+        
         pagingViewController.dataSource = self
         
         addChild(pagingViewController)
@@ -95,10 +87,81 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         let nameOfCategories = recodeModel.CategoriesString
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
+}
 
 //MARK: - ボタンアクション
+
+extension TaskViewController {
     
-    @IBAction func AddButtonPressed(_ sender: Any) {
+    func setUpButton() {
+        manuButton.addTarget(self, action: #selector(self.movementWhenManuButtonTapped(_:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(self.movementWhenCloseButtonTapped(_:)), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
+    }
+    
+    //飛び出すボタンの座標計算用関数
+    func getButtonPosition(angle: CGFloat, radius: CGFloat) -> CGPoint {
+        let radian = angle * .pi / 180
+        
+        let positionX = manuButton.layer.position.x + cos(radian) * radius
+        let positionY = manuButton.layer.position.y + sin(radian) * radius
+        
+        let position = CGPoint(x: positionX, y: positionY)
+        
+        return position
+    }
+    
+    //manuButtonを押したときのアニメーション処理
+    @objc func movementWhenManuButtonTapped(_ sender: UIButton) {
+        //manuButtonの被タップ表現
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.manuButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        })
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            self.manuButton.transform = .identity
+        }, completion: nil)
+        
+        //以下のアニメーションでmanuButtonから複数のボタンが飛び出る。
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+            self.addButton.layer.position = self.getButtonPosition(angle: -90, radius: 200)
+            self.deleteButton.layer.position = self.getButtonPosition(angle: -180, radius: 200)
+            self.tweetButton.layer.position = self.getButtonPosition(angle: -135, radius: 200)
+        }, completion: {_ in
+            self.closeButton.isHidden = false
+            self.addButton.isHidden = false
+            self.tweetButton.isHidden = false
+            self.deleteButton.isHidden = false
+            self.manuButton.isHidden = true
+        })
+    }
+    
+    //closeButtonをタップしたときの処理。
+    @objc func movementWhenCloseButtonTapped(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.closeButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        })
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+            self.closeButton.transform = .identity
+        }, completion: nil)
+        
+        //以下のアニメーションで展開したボタン類を閉じる
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+            self.addButton.layer.position = self.manuButton.layer.position
+            self.deleteButton.layer.position = self.manuButton.layer.position
+            self.tweetButton.layer.position = self.manuButton.layer.position
+        }, completion: {_ in
+            self.addButton.isHidden = true
+            self.tweetButton.isHidden = true
+            self.deleteButton.isHidden = true
+            self.closeButton.isHidden = true
+            self.manuButton.isHidden = false
+        })
+    }
+    
+    //タスクの追加処理。アラートでテキストボックスを出す。
+    @objc func addButtonTapped(_ sender:UIButton) {
         var textfield = UITextField()
         
         let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
@@ -120,40 +183,8 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func DeleteButtonPressed(_ sender: Any) {
+    //描画されているチェックした項目を削除
+    @objc func deleteButtonTapped(_ sender:UIButton) {
         recodeModel.deleteTask()
     }
-    
-    
 }
-
-//MARK: - ScreenRecodeModelDelegate
-//
-//extension TaskViewController: ScreenRecodeModelDelegate {
-//    func addNewTask(of item: String) {
-//
-//    }
-//
-//    func deleteTaskItem() {
-//
-//    }
-//
-//    func addNewTaskTest() {
-//        var textfield = UITextField()
-//
-//        let alert = UIAlertController(title: "新しいタスクを追加", message: "", preferredStyle:.alert)
-//        let action = UIAlertAction(title: "追加", style: .default) { (action) in
-//            let item = textfield.text!
-//            self.screenRecodeModelDelegate?.addNewTask(of: item)
-//            }
-//
-//        alert.addTextField { (alertTextfield) in
-//            alertTextfield.placeholder = "新しいタスクを記入"
-//            textfield = alertTextfield
-//        }
-//        alert.addAction(action)
-//        present(alert, animated: true, completion: nil)
-//    }
-//
-//
-//}
