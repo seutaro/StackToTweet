@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FEI-8Z-PLZ">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -17,52 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="obB-iY-SGc">
-                                <rect key="frame" x="0.0" y="672" width="414" height="150"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siG-gc-ifg">
-                                        <rect key="frame" x="0.0" y="50" width="132" height="100"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" name="Custom hard"/>
-                                        <state key="normal" image="deletebutton">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="DeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8dm-YH-8wF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYg-0a-s24">
-                                        <rect key="frame" x="132" y="0.0" width="150" height="150"/>
-                                        <color key="tintColor" systemColor="linkColor"/>
-                                        <state key="normal" image="TweetButton"/>
-                                        <connections>
-                                            <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="yrv-8O-Yi1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
-                                        <rect key="frame" x="282" y="50" width="132" height="100"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                        <state key="normal" image="addbutton">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="AddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tNr-mo-tsh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="xYg-0a-s24" firstAttribute="centerY" secondItem="obB-iY-SGc" secondAttribute="centerY" id="PWt-6C-IdS"/>
-                                    <constraint firstItem="xYg-0a-s24" firstAttribute="centerX" secondItem="obB-iY-SGc" secondAttribute="centerX" id="vmQ-2h-CyF"/>
-                                </constraints>
-                            </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
+                                <rect key="frame" x="254" y="696" width="150" height="150"/>
+                                <state key="normal" image="TweetButton"/>
+                                <connections>
+                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
+                                <rect key="frame" x="279" y="727" width="100" height="100"/>
+                                <state key="normal" image="addButton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
+                                <rect key="frame" x="279" y="727" width="100" height="100"/>
+                                <state key="normal" image="deleteButton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
+                                <rect key="frame" x="289" y="737" width="90" height="90"/>
+                                <state key="normal" image="close"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
+                                <rect key="frame" x="289" y="737" width="90" height="90"/>
+                                <state key="normal" image="manuButton"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="obB-iY-SGc" secondAttribute="bottom" constant="40" id="19D-OA-YMj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="obB-iY-SGc" secondAttribute="trailing" id="uoN-6h-zlJ"/>
-                            <constraint firstItem="obB-iY-SGc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uyS-5D-Wte"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
+                            <constraint firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="50" id="Mbt-17-PpI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
+                            <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="10" id="abO-Iz-a24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sws-uZ-g8d" secondAttribute="trailing" constant="35" id="eAU-yx-m8d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKN-P9-ZGu" secondAttribute="bottom" constant="35" id="fOW-N7-tfx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
@@ -75,9 +67,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddButton" destination="gXr-92-8dp" id="6aC-kZ-c6j"/>
-                        <outlet property="DeleteButton" destination="siG-gc-ifg" id="bAz-nv-CaF"/>
-                        <outlet property="tweetButton" destination="xYg-0a-s24" id="7e9-wB-MHo"/>
+                        <outlet property="addButton" destination="sws-uZ-g8d" id="PDq-eu-CXg"/>
+                        <outlet property="closeButton" destination="74d-zc-Wwq" id="0uk-Ma-biW"/>
+                        <outlet property="deleteButton" destination="eKN-P9-ZGu" id="Lop-Qs-HUe"/>
+                        <outlet property="manuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
+                        <outlet property="tweetButton" destination="iGe-Xc-ve2" id="Gaq-6A-i85"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -131,18 +125,14 @@
     </scenes>
     <resources>
         <image name="TweetButton" width="150" height="150"/>
-        <image name="addbutton" width="100" height="100"/>
-        <image name="deletebutton" width="100" height="100"/>
+        <image name="addButton" width="100" height="100"/>
+        <image name="close" width="90" height="90"/>
+        <image name="deleteButton" width="100" height="100"/>
+        <image name="manuButton" width="90" height="90"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="Custm medium">
             <color red="0.9179999828338623" green="0.52499997615814209" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Custom hard">
-            <color red="0.87800002098083496" green="0.32199999690055847" blue="0.59200000762939453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
