@@ -25,39 +25,16 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         super.viewDidLoad()
         
         setUpButton()
-        
-
-        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()
         
-        
-        pagingViewController.dataSource = self
-        
-        addChild(pagingViewController)
-        view.addSubview(pagingViewController.view)
-        pagingViewController.didMove(toParent: self)
-        self.view.sendSubviewToBack(pagingViewController.view)
-        
-        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
-        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
-        
-        
-        
-        
-        //以下の文で描画処理を定義？ないと描画されない。
-        pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        pagingViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        pagingViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        setUpPagingViewController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         recodeModel.updateModel()
         pagingViewController.reloadData()
     }
-    
     
     //カテゴリ追加画面遷移時にrecodeModelをAddCategoryVCに渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,9 +47,33 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
             tweetVC?.recedeModel = self.recodeModel
         }
     }
+}
 
-    //MARK: - PagingViewControllerDatasSource
+
+//MARK: - PagingViewControllerDataSource
+
+
+extension TaskViewController {
+    //pagingviewcontrollerの描画処理
+    func setUpPagingViewController() {
+        pagingViewController.dataSource = self
+        
+        addChild(pagingViewController)
+        view.addSubview(pagingViewController.view)
+        pagingViewController.didMove(toParent: self)
+        self.view.sendSubviewToBack(pagingViewController.view)
+        
+        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
+        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
+        
+        pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        pagingViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        pagingViewController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+    }
     
+    //以下paigingviewcontrollerのdatasource
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
         let numberOfCategories = recodeModel.CategoriesString.count
         return numberOfCategories
@@ -80,7 +81,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         let controllers = recodeModel.PagingVCs
-        return controllers[index] // デフォルト作成　→　ここのUIViewController() と差し替える？
+        return controllers[index]
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
@@ -88,6 +89,8 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
 }
+
+
 
 //MARK: - ボタンアクション
 
