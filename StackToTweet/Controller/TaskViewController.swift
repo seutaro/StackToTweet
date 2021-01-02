@@ -40,11 +40,15 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toAddCategory" {
+            
             let addCategoryVC = segue.destination as? AddCategoryViewController
             addCategoryVC?.recodeModel = self.recodeModel
+            
         } else if segue.identifier == "toTweetView" {
+            
             let tweetVC = segue.destination as? TweetViewController
             tweetVC?.recedeModel = self.recodeModel
+            
         }
     }
 }

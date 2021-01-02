@@ -41,9 +41,11 @@ class ScreenRecodeModel {
     func createViewController(of category: Category) -> PageViewController {
         let categoryVC = PageViewController()
         categoryVC.category = category
-        categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category} //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
-        categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData} //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
-        
+        categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category}
+        //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
+        categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData}
+        //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
+        //ここでメモリリークが生じていないだろうか？考えるべき。
         return categoryVC
     }
     

@@ -14,7 +14,7 @@ class PageViewController: UITableViewController {
     var Items: Results<Item>?
     var setCurrentDisplayCategory: ((_ category: Category) -> Void)? // currentDisplayCategory = category taskviewcontroller内 RecodeModel.category = currentCategory
     var passFuncOfCurrentTableViewReloadData: (() -> Void)?
-    var tableViewReloadData: (() -> Void) { tableView.reloadData} //こいつをScreenRecodeModelのプロパティに代入　そのためのcomplihentionが必要　taskviewcontroller内でcomplihention(recode) = complihention(tableview) となる
+    var tableViewReloadData: (() -> Void) { tableView.reloadData}
     var category: Category? {
         didSet {
             loadItems()
@@ -106,25 +106,5 @@ class PageViewController: UITableViewController {
         
         return cell
     }
-    
-    //MARK: - AddButtonDelegate
-    
-
-//
-//    func deleteTaskItem() {
-//        if let currentCategory = category {
-//            do {
-//                try self.realm.write {
-//                    let deletedItems = currentCategory.items.filter("done == true")
-//                    self.realm.delete(deletedItems)
-//                }
-//            } catch {
-//                print("タスクの削除に失敗しました")
-//            }
-//        }
-//        tableView.reloadData()
-//    }
-//
-//
 
 }
