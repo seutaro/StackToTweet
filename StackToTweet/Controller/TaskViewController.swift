@@ -106,7 +106,6 @@ extension TaskViewController {
         addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
     }
-    
     //飛び出すボタンの座標計算用関数
     func getButtonPosition(angle: CGFloat, radius: CGFloat) -> CGPoint {
         let radian = angle * .pi / 180

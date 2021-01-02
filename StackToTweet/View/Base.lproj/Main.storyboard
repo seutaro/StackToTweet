@@ -18,23 +18,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
-                                <rect key="frame" x="329" y="777" width="50" height="50"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="addButton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
-                                <rect key="frame" x="329" y="777" width="50" height="50"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="deleteButton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
-                                <rect key="frame" x="329" y="777" width="50" height="50"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="closeButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
-                                <rect key="frame" x="329" y="777" width="50" height="50"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="manuButton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
-                                <rect key="frame" x="329" y="777" width="50" height="50"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="tweetButton"/>
                                 <connections>
                                     <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
@@ -42,7 +42,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
@@ -124,15 +124,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addButton" width="50" height="50"/>
-        <image name="closeButton" width="50" height="50"/>
-        <image name="deleteButton" width="50" height="50"/>
-        <image name="manuButton" width="50" height="50"/>
+        <image name="addButton" width="70" height="70"/>
+        <image name="closeButton" width="70" height="70"/>
+        <image name="deleteButton" width="70" height="70"/>
+        <image name="manuButton" width="70" height="70"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="tweetButton" width="50" height="50"/>
+        <image name="tweetButton" width="70" height="70"/>
         <namedColor name="Custm medium">
             <color red="0.9179999828338623" green="0.52499997615814209" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
