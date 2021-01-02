@@ -67,8 +67,12 @@ extension TaskViewController {
         pagingViewController.didMove(toParent: self)
         self.view.sendSubviewToBack(pagingViewController.view)
         
-        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
-        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
+        pagingViewController.indicatorColor = UIColor(named: "Custom light")!
+        pagingViewController.selectedTextColor = UIColor(named: "Custom light")!
+        pagingViewController.backgroundColor = UIColor.systemBackground
+        pagingViewController.selectedBackgroundColor = UIColor.systemBackground
+        pagingViewController.textColor = UIColor(named: "textColor")!
+        
         
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -130,9 +134,9 @@ extension TaskViewController {
         
         //以下のアニメーションでmanuButtonから複数のボタンが飛び出る。
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-            self.addButton.layer.position = self.getButtonPosition(angle: -90, radius: 200)
-            self.deleteButton.layer.position = self.getButtonPosition(angle: -180, radius: 200)
-            self.tweetButton.layer.position = self.getButtonPosition(angle: -135, radius: 200)
+            self.addButton.layer.position = self.getButtonPosition(angle: -90, radius: 120)
+            self.deleteButton.layer.position = self.getButtonPosition(angle: -180, radius: 120)
+            self.tweetButton.layer.position = self.getButtonPosition(angle: -135, radius: 120)
         }, completion: {_ in
             self.closeButton.isHidden = false
             self.addButton.isHidden = false

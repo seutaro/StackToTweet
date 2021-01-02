@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FEI-8Z-PLZ">
-    <device id="retina6_5" orientation="portrait" appearance="dark"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -21,6 +21,13 @@
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="addButton"/>
                             </button>
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <state key="normal" image="tweetButton"/>
+                                <connections>
+                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
+                                </connections>
+                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="deleteButton"/>
@@ -32,13 +39,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="manuButton"/>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
-                                <state key="normal" image="tweetButton"/>
-                                <connections>
-                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -58,7 +58,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
-                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l"/>
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
