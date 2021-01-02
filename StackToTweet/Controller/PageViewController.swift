@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ReusableTableViewController: UITableViewController {
+class PageViewController: UITableViewController {
     
     let realm = try! Realm()
     var Items: Results<Item>?
