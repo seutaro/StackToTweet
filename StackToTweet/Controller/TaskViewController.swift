@@ -12,8 +12,9 @@ import RealmSwift
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
     
+    @IBOutlet weak var defaultMessage: UILabel!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var manuButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tweetButton: UIButton!
@@ -25,13 +26,52 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         super.viewDidLoad()
         
         setUpButton()
-        
-
-        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         recodeModel.loadCategories()
         
+        setUpPagingViewController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        recodeModel.updateModel()
+        pagingViewController.reloadData()
+        defaultMessageWillShow()
+    }
+    
+    //カテゴリ追加画面遷移時にrecodeModelをAddCategoryVCに渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "toAddCategory" {
+            
+            let addCategoryVC = segue.destination as? AddCategoryViewController
+            addCategoryVC?.recodeModel = self.recodeModel
+            
+        } else if segue.identifier == "toTweetView" {
+            
+            let tweetVC = segue.destination as? TweetViewController
+            tweetVC?.recedeModel = self.recodeModel
+            
+        }
+    }
+    
+    func defaultMessageWillShow() {
+        let NumberOfCategories = recodeModel.CategoriesString.count
+        
+        if NumberOfCategories == 0 {
+            defaultMessage.isHidden = false
+        } else {
+            defaultMessage.isHidden = true
+        }
+    }
+}
+
+
+//MARK: - PagingViewControllerDataSource
+
+
+extension TaskViewController {
+    //pagingviewcontrollerの描画処理
+    func setUpPagingViewController() {
         pagingViewController.dataSource = self
         
         addChild(pagingViewController)
@@ -39,13 +79,14 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         pagingViewController.didMove(toParent: self)
         self.view.sendSubviewToBack(pagingViewController.view)
         
-        pagingViewController.indicatorColor = UIColor(named: "Custom hard")!
-        pagingViewController.selectedTextColor = UIColor(named: "Custom hard")!
+        pagingViewController.indicatorColor = UIColor(named: "Custom light")!
+        pagingViewController.selectedTextColor = UIColor(named: "Custom light")!
+        pagingViewController.backgroundColor = UIColor.systemBackground
+        pagingViewController.menuBackgroundColor = UIColor.systemBackground
+        pagingViewController.selectedBackgroundColor = UIColor.systemBackground
+        pagingViewController.textColor = UIColor(named: "textColor")!
         
         
-        
-        
-        //以下の文で描画処理を定義？ないと描画されない。
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         pagingViewController.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -53,26 +94,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         pagingViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        recodeModel.updateModel()
-        pagingViewController.reloadData()
-    }
-    
-    
-    //カテゴリ追加画面遷移時にrecodeModelをAddCategoryVCに渡す
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toAddCategory" {
-            let addCategoryVC = segue.destination as? AddCategoryViewController
-            addCategoryVC?.recodeModel = self.recodeModel
-        } else if segue.identifier == "toTweetView" {
-            let tweetVC = segue.destination as? TweetViewController
-            tweetVC?.recedeModel = self.recodeModel
-        }
-    }
-
-    //MARK: - PagingViewControllerDatasSource
-    
+    //以下paigingviewcontrollerのdatasource
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
         let numberOfCategories = recodeModel.CategoriesString.count
         return numberOfCategories
@@ -80,7 +102,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         let controllers = recodeModel.PagingVCs
-        return controllers[index] // デフォルト作成　→　ここのUIViewController() と差し替える？
+        return controllers[index]
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
@@ -89,23 +111,24 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
 }
 
+
+
 //MARK: - ボタンアクション
 
 extension TaskViewController {
     
     func setUpButton() {
-        manuButton.addTarget(self, action: #selector(self.movementWhenManuButtonTapped(_:)), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(self.movementWhenMenuButtonTapped(_:)), for: .touchUpInside)
         closeButton.addTarget(self, action: #selector(self.movementWhenCloseButtonTapped(_:)), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
     }
-    
     //飛び出すボタンの座標計算用関数
     func getButtonPosition(angle: CGFloat, radius: CGFloat) -> CGPoint {
         let radian = angle * .pi / 180
         
-        let positionX = manuButton.layer.position.x + cos(radian) * radius
-        let positionY = manuButton.layer.position.y + sin(radian) * radius
+        let positionX = menuButton.layer.position.x + cos(radian) * radius
+        let positionY = menuButton.layer.position.y + sin(radian) * radius
         
         let position = CGPoint(x: positionX, y: positionY)
         
@@ -113,26 +136,26 @@ extension TaskViewController {
     }
     
     //manuButtonを押したときのアニメーション処理
-    @objc func movementWhenManuButtonTapped(_ sender: UIButton) {
+    @objc func movementWhenMenuButtonTapped(_ sender: UIButton) {
         //manuButtonの被タップ表現
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.manuButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.menuButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         })
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            self.manuButton.transform = .identity
+            self.menuButton.transform = .identity
         }, completion: nil)
         
         //以下のアニメーションでmanuButtonから複数のボタンが飛び出る。
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-            self.addButton.layer.position = self.getButtonPosition(angle: -90, radius: 200)
-            self.deleteButton.layer.position = self.getButtonPosition(angle: -180, radius: 200)
-            self.tweetButton.layer.position = self.getButtonPosition(angle: -135, radius: 200)
+            self.addButton.layer.position = self.getButtonPosition(angle: -90, radius: 120)
+            self.deleteButton.layer.position = self.getButtonPosition(angle: -180, radius: 120)
+            self.tweetButton.layer.position = self.getButtonPosition(angle: -135, radius: 120)
         }, completion: {_ in
             self.closeButton.isHidden = false
             self.addButton.isHidden = false
             self.tweetButton.isHidden = false
             self.deleteButton.isHidden = false
-            self.manuButton.isHidden = true
+            self.menuButton.isHidden = true
         })
     }
     
@@ -148,15 +171,15 @@ extension TaskViewController {
         
         //以下のアニメーションで展開したボタン類を閉じる
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
-            self.addButton.layer.position = self.manuButton.layer.position
-            self.deleteButton.layer.position = self.manuButton.layer.position
-            self.tweetButton.layer.position = self.manuButton.layer.position
+            self.addButton.layer.position = self.menuButton.layer.position
+            self.deleteButton.layer.position = self.menuButton.layer.position
+            self.tweetButton.layer.position = self.menuButton.layer.position
         }, completion: {_ in
             self.addButton.isHidden = true
             self.tweetButton.isHidden = true
             self.deleteButton.isHidden = true
             self.closeButton.isHidden = true
-            self.manuButton.isHidden = false
+            self.menuButton.isHidden = false
         })
     }
     

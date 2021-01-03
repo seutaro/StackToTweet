@@ -17,29 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
-                                <rect key="frame" x="254" y="696" width="150" height="150"/>
-                                <state key="normal" image="TweetButton"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <state key="normal" image="addButton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <state key="normal" image="tweetButton"/>
                                 <connections>
                                     <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
-                                <rect key="frame" x="279" y="727" width="100" height="100"/>
-                                <state key="normal" image="addButton"/>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
-                                <rect key="frame" x="279" y="727" width="100" height="100"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="deleteButton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
-                                <rect key="frame" x="289" y="737" width="90" height="90"/>
-                                <state key="normal" image="close"/>
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <state key="normal" image="closeButton"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
-                                <rect key="frame" x="289" y="737" width="90" height="90"/>
-                                <state key="normal" image="manuButton"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="menuButton">
+                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <state key="normal" image="menuButton"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
+                                <rect key="frame" x="25" y="437.66666666666663" width="364" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,18 +53,22 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
-                            <constraint firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="50" id="Mbt-17-PpI"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J8y-7g-rmc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
-                            <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="10" id="abO-Iz-a24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="35" id="VtB-XU-3Uw"/>
+                            <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="35" id="abO-Iz-a24"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sws-uZ-g8d" secondAttribute="trailing" constant="35" id="eAU-yx-m8d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKN-P9-ZGu" secondAttribute="bottom" constant="35" id="fOW-N7-tfx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vNJ-Mo-jHZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
-                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l"/>
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -69,8 +79,9 @@
                     <connections>
                         <outlet property="addButton" destination="sws-uZ-g8d" id="PDq-eu-CXg"/>
                         <outlet property="closeButton" destination="74d-zc-Wwq" id="0uk-Ma-biW"/>
+                        <outlet property="defaultMessage" destination="ZOm-nG-j0g" id="SoK-ZI-Lca"/>
                         <outlet property="deleteButton" destination="eKN-P9-ZGu" id="Lop-Qs-HUe"/>
-                        <outlet property="manuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
+                        <outlet property="menuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
                         <outlet property="tweetButton" destination="iGe-Xc-ve2" id="Gaq-6A-i85"/>
                     </connections>
                 </viewController>
@@ -124,12 +135,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TweetButton" width="150" height="150"/>
-        <image name="addButton" width="100" height="100"/>
-        <image name="close" width="90" height="90"/>
-        <image name="deleteButton" width="100" height="100"/>
-        <image name="manuButton" width="90" height="90"/>
+        <image name="addButton" width="70" height="70"/>
+        <image name="closeButton" width="70" height="70"/>
+        <image name="deleteButton" width="70" height="70"/>
+        <image name="menuButton" width="70" height="70"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="tweetButton" width="70" height="70"/>
         <namedColor name="Custm medium">
             <color red="0.9179999828338623" green="0.52499997615814209" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

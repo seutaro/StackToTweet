@@ -22,6 +22,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tweetButton.layer.cornerRadius = 15
         tweetTableView.dataSource = self
         tweetTableView.delegate = self
         tweetTableView.tableFooterView = UIView()

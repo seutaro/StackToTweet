@@ -19,8 +19,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jOa-T5-orG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="565"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="Custom hard"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tweetCell" id="BK1-Zl-1E0">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -28,7 +29,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BK1-Zl-1E0" id="EtC-ZJ-Xpq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" name="backGroundColor"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="backGroundColor"/>
                                         <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
@@ -40,7 +43,7 @@
                                     <constraint firstAttribute="height" constant="51" id="6Wl-za-4To"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <state key="normal" title="ツイートする"/>
                                 <connections>
                                     <action selector="pressedTweetButton:" destination="EWM-EG-UvF" eventType="touchUpInside" id="9LN-gS-AvT"/>
@@ -48,7 +51,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sZ9-C8-RKe"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.485138132" blue="0.25800502650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jOa-T5-orG" firstAttribute="top" secondItem="sZ9-C8-RKe" secondAttribute="top" id="5wV-0E-dQH"/>
@@ -78,8 +81,14 @@
         <namedColor name="TweetButtonColor">
             <color red="0.7369999885559082" green="0.90200001001358032" blue="0.92199999094009399" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="backGroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
