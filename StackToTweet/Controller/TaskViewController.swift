@@ -12,8 +12,9 @@ import RealmSwift
 class TaskViewController: UIViewController, PagingViewControllerDataSource {
 
     
+    @IBOutlet weak var defaultMessage: UILabel!
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var manuButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tweetButton: UIButton!
@@ -34,6 +35,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     override func viewWillAppear(_ animated: Bool) {
         recodeModel.updateModel()
         pagingViewController.reloadData()
+        defaultMessageWillShow()
     }
     
     //カテゴリ追加画面遷移時にrecodeModelをAddCategoryVCに渡す
@@ -49,6 +51,16 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
             let tweetVC = segue.destination as? TweetViewController
             tweetVC?.recedeModel = self.recodeModel
             
+        }
+    }
+    
+    func defaultMessageWillShow() {
+        let NumberOfCategories = recodeModel.CategoriesString.count
+        
+        if NumberOfCategories == 0 {
+            defaultMessage.isHidden = false
+        } else {
+            defaultMessage.isHidden = true
         }
     }
 }
@@ -70,6 +82,7 @@ extension TaskViewController {
         pagingViewController.indicatorColor = UIColor(named: "Custom light")!
         pagingViewController.selectedTextColor = UIColor(named: "Custom light")!
         pagingViewController.backgroundColor = UIColor.systemBackground
+        pagingViewController.menuBackgroundColor = UIColor.systemBackground
         pagingViewController.selectedBackgroundColor = UIColor.systemBackground
         pagingViewController.textColor = UIColor(named: "textColor")!
         
@@ -105,7 +118,7 @@ extension TaskViewController {
 extension TaskViewController {
     
     func setUpButton() {
-        manuButton.addTarget(self, action: #selector(self.movementWhenManuButtonTapped(_:)), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(self.movementWhenMenuButtonTapped(_:)), for: .touchUpInside)
         closeButton.addTarget(self, action: #selector(self.movementWhenCloseButtonTapped(_:)), for: .touchUpInside)
         addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(self.deleteButtonTapped), for: .touchUpInside)
@@ -114,8 +127,8 @@ extension TaskViewController {
     func getButtonPosition(angle: CGFloat, radius: CGFloat) -> CGPoint {
         let radian = angle * .pi / 180
         
-        let positionX = manuButton.layer.position.x + cos(radian) * radius
-        let positionY = manuButton.layer.position.y + sin(radian) * radius
+        let positionX = menuButton.layer.position.x + cos(radian) * radius
+        let positionY = menuButton.layer.position.y + sin(radian) * radius
         
         let position = CGPoint(x: positionX, y: positionY)
         
@@ -123,13 +136,13 @@ extension TaskViewController {
     }
     
     //manuButtonを押したときのアニメーション処理
-    @objc func movementWhenManuButtonTapped(_ sender: UIButton) {
+    @objc func movementWhenMenuButtonTapped(_ sender: UIButton) {
         //manuButtonの被タップ表現
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.manuButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.menuButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         })
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-            self.manuButton.transform = .identity
+            self.menuButton.transform = .identity
         }, completion: nil)
         
         //以下のアニメーションでmanuButtonから複数のボタンが飛び出る。
@@ -142,7 +155,7 @@ extension TaskViewController {
             self.addButton.isHidden = false
             self.tweetButton.isHidden = false
             self.deleteButton.isHidden = false
-            self.manuButton.isHidden = true
+            self.menuButton.isHidden = true
         })
     }
     
@@ -158,15 +171,15 @@ extension TaskViewController {
         
         //以下のアニメーションで展開したボタン類を閉じる
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
-            self.addButton.layer.position = self.manuButton.layer.position
-            self.deleteButton.layer.position = self.manuButton.layer.position
-            self.tweetButton.layer.position = self.manuButton.layer.position
+            self.addButton.layer.position = self.menuButton.layer.position
+            self.deleteButton.layer.position = self.menuButton.layer.position
+            self.tweetButton.layer.position = self.menuButton.layer.position
         }, completion: {_ in
             self.addButton.isHidden = true
             self.tweetButton.isHidden = true
             self.deleteButton.isHidden = true
             self.closeButton.isHidden = true
-            self.manuButton.isHidden = false
+            self.menuButton.isHidden = false
         })
     }
     

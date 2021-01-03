@@ -36,10 +36,16 @@
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
                                 <state key="normal" image="closeButton"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="manuButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="menuButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
-                                <state key="normal" image="manuButton"/>
+                                <state key="normal" image="menuButton"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
+                                <rect key="frame" x="25" y="437.66666666666669" width="364" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,6 +53,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J8y-7g-rmc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="35" id="VtB-XU-3Uw"/>
                             <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="35" id="abO-Iz-a24"/>
@@ -55,6 +62,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vNJ-Mo-jHZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
@@ -71,8 +79,9 @@
                     <connections>
                         <outlet property="addButton" destination="sws-uZ-g8d" id="PDq-eu-CXg"/>
                         <outlet property="closeButton" destination="74d-zc-Wwq" id="0uk-Ma-biW"/>
+                        <outlet property="defaultMessage" destination="ZOm-nG-j0g" id="SoK-ZI-Lca"/>
                         <outlet property="deleteButton" destination="eKN-P9-ZGu" id="Lop-Qs-HUe"/>
-                        <outlet property="manuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
+                        <outlet property="menuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
                         <outlet property="tweetButton" destination="iGe-Xc-ve2" id="Gaq-6A-i85"/>
                     </connections>
                 </viewController>
@@ -129,7 +138,7 @@
         <image name="addButton" width="70" height="70"/>
         <image name="closeButton" width="70" height="70"/>
         <image name="deleteButton" width="70" height="70"/>
-        <image name="manuButton" width="70" height="70"/>
+        <image name="menuButton" width="70" height="70"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="tweetButton" width="70" height="70"/>
         <namedColor name="Custm medium">
