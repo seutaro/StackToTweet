@@ -66,7 +66,6 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     
     //MARK: - ButtonAction
-    //textfieldのデリゲートメソッドについて調べて実装
     
     @IBAction func categoryAddButtonPressed(_ sender: Any) {
         
@@ -88,37 +87,6 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         recodeModel.deleteCategory(for: indexPath)
         recodeModel.updateModel()
         categoryTableView.reloadData()
-    }
-    
-    //MARK: - TextFieldDelegate
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        return true
-//    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if self.categoryTextfield.isFirstResponder {
-//            self.categoryTextfield.resignFirstResponder()
-//        }
-//    }
-    
-    func getFirstResponder(view:UIView) -> UIView? {
-        if view.isFirstResponder {
-            return view
-        }
-        
-        for subView in view.subviews {
-            if let _ = getFirstResponder(view: subView) {
-                return subView
-            }
-        }
-        
-        return nil
     }
 }
 
