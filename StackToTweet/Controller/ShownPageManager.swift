@@ -50,6 +50,9 @@ class ShownPageManager {
         for i in 0 ..< numberOfCategories {
             if let category = RecodeModel.categories?[i] {
                 let pageVC = createPageViewController(of: category)
+                pageVC.pageIndex = i
+                pageVC.setPageIndexToShownPageManager = {[unowned self,unowned pageVC] in self.IndexOfCurrentShownPageViewController = pageVC.pageIndex} 
+                
                 controllers.append(pageVC)
             }
         }

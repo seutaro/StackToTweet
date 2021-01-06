@@ -12,6 +12,7 @@ class PageViewController: UITableViewController {
     
     let realm = try! Realm()
     var Items: Results<Item>?
+    var pageIndex: Int!
     var setCurrentDisplayCategory: ((_ category: Category) -> Void)? // currentDisplayCategory = category taskviewcontroller内 RecodeModel.category = currentCategory
     var passFuncOfCurrentTableViewReloadData: (() -> Void)?
     var tableViewReloadData: (() -> Void) { tableView.reloadData}
@@ -20,6 +21,8 @@ class PageViewController: UITableViewController {
             loadItems()
         }
     }
+    
+    var setPageIndexToShownPageManager:(() -> Void)?
     
     
     func loadItems() {
