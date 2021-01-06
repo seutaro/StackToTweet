@@ -45,7 +45,6 @@ class ScreenRecodeModel {
         //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
         categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData}
         //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
-        //ここでメモリリークが生じていないだろうか？考えるべき。
         return categoryVC
     }
     
