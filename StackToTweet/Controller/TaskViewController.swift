@@ -19,7 +19,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tweetButton: UIButton!
     
-    let recodeModel = ScreenRecodeModel()
+    let recodeModel = DataManager()
     let shownPageManager = ShownPageManager()
     let pagingViewController = PagingViewController()
     
@@ -35,7 +35,6 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        recodeModel.updateModel()
         recodeModel.loadCategories()
         shownPageManager.updatePageVCs()
         pagingViewController.reloadData()
@@ -60,7 +59,6 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     func defaultMessageWillShow() {
-//        let NumberOfCategories = recodeModel.CategoriesString.count
         let NumberOfCategories = shownPageManager.CategoryString.count
         
         if NumberOfCategories == 0 {
@@ -102,19 +100,16 @@ extension TaskViewController {
     
     //以下paigingviewcontrollerのdatasource
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-//        let numberOfCategories = recodeModel.CategoriesString.count
         let numberOfCategories = shownPageManager.CategoryString.count
         return numberOfCategories
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-//        let controllers = recodeModel.PagingVCs
         let controllers = shownPageManager.pageVCs
         return controllers[index]
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-//        let nameOfCategories = recodeModel.CategoriesString
         let nameOfCategories = shownPageManager.CategoryString
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
@@ -224,7 +219,7 @@ extension TaskViewController {
         
         if let pageIndex = shownPageManager.IndexOfCurrentShownPageViewController {
             let categoryName = shownPageManager.CategoryString[pageIndex]
-            recodeModel.deleteTask(in: categoryName)//引数としてpageIndexを渡す
+            recodeModel.deleteTask(in: categoryName)
             shownPageManager.tableViewReloadDataOnTheShownPage()
         }
     }

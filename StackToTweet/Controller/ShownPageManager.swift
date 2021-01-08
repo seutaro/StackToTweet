@@ -9,12 +9,14 @@ import Foundation
 import RealmSwift
 
 class ShownPageManager {
-    var RecodeModel: ScreenRecodeModel!
+    var RecodeModel: DataManager!
     
-    var IndexOfCurrentShownPageViewController: Int?
-    var pageVCs: [PageViewController] = []
-    var CategoryString: [String] = []
+    var IndexOfCurrentShownPageViewController: Int? //現在表示されているpageのインデックスを保持
+    var pageVCs: [PageViewController] = []  //カテゴリごとのpageViewControllerを配列として保持
+    var CategoryString: [String] = []   //上タブの項目（カテゴリ名）を配列として保持
     
+    
+    //現在表示されているpageViewControllerのtableview.reloadDataを実行する関数
     func tableViewReloadDataOnTheShownPage() {
         guard let Index = IndexOfCurrentShownPageViewController else {
             return
@@ -22,13 +24,14 @@ class ShownPageManager {
         pageVCs[Index].tableView.reloadData()
     }
     
-    
+    //カテゴリが追加、削除された際に描画するpageを更新する関数
     func updatePageVCs() {
         let numberOfCategories = getNumberOfCategories()
         CategoryString = getArrayOfCategoryStrings(with: numberOfCategories)
         pageVCs = getArrayOfPageViewControllers(with: numberOfCategories)
     }
     
+    //以下pageVCs,CategoryString更新のための関数
     
     func getNumberOfCategories() -> Int {
         guard let numberOfCategories = RecodeModel.categories?.count else {

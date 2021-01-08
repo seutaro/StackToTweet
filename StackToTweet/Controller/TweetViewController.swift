@@ -15,7 +15,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var tweetButton: UIButton!
     @IBOutlet weak var tweetTableView: UITableView!
     
-    var recedeModel: ScreenRecodeModel!
+    var recedeModel: DataManager!
     let realm = try! Realm()
     
     
