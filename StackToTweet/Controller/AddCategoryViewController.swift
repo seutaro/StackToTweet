@@ -9,7 +9,6 @@ import UIKit
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
-//    var recodeModel: ScreenRecodeModel
     weak var recodeModel: DataManager!
     weak var shownPageManager: ShownPageManager!
     

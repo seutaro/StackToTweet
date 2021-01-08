@@ -139,7 +139,7 @@ class DataManager {
         CategoriesWtihTweetItems = getTweetCategories()
     }
     
-    func getTweetItemText(of category: Category) -> String {
+    func createTweetItemText(of category: Category) -> String {
         let tweetableItems = getTweetableItemList(from: category)
         var tweet = ""
         
@@ -149,10 +149,10 @@ class DataManager {
         return tweet
     }
     
-    func getTweetCategoryText(with category: Category) -> String {
+    func createTweetCategoryText(with category: Category) -> String {
         
         var tweet = "【#\(category.name)】\n"
-        let itemsText = getTweetItemText(of: category)
+        let itemsText = createTweetItemText(of: category)
         
         if itemsText != "" {
             tweet = tweet + "\(itemsText)\n"
@@ -171,7 +171,7 @@ class DataManager {
                     """
         
         for category in tweetCategories {
-            let textByCategory = getTweetCategoryText(with: category)
+            let textByCategory = createTweetCategoryText(with: category)
             tweet = tweet + "\(textByCategory)"
         }
         return tweet
