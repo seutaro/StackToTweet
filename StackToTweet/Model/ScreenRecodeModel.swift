@@ -13,21 +13,24 @@ class ScreenRecodeModel {
     
     let realm = try! Realm()
     var categories: Results<Category>?
-    var currentDisplayCategory: Category?               //現在描画されているtableview内に表示されているカテゴリ
+    var categoriesString: [String] = []
+//    var currentDisplayCategory: Category?               //現在描画されているtableview内に表示されているカテゴリ
     
-    var doCurrentTableviewReloadData: (() -> Void)?     //現在表示されているtableviewのtableview.reloadDataを保持する
-    var PagingVCs: [UIViewController] = []              //カテゴリごとのtableViewをスタックする
-    var CategoriesString: [String] = []                 //各カテゴリ名をStringとしてスタック
+//    var doCurrentTableviewReloadData: (() -> Void)?     //現在表示されているtableviewのtableview.reloadDataを保持する
+//    var PagingVCs: [UIViewController] = []              //カテゴリごとのtableViewをスタックする
+//    var CategoriesString: [String] = []                 //各カテゴリ名をStringとしてスタック
     
     
-    func updateModel() {
-        let numberOfCategories = getNumberOfCategories()
-        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategories)
-        PagingVCs = getArrayOfViewControllers(with: numberOfCategories)
-    }
+//    func updateModel() {
+//        let numberOfCategories = getNumberOfCategories()
+//        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategories)
+//        PagingVCs = getArrayOfViewControllers(with: numberOfCategories)
+//    }
     
     func loadCategories() {
         categories = realm.objects(Category.self)
+        categoriesString = getArrayOfCategoryStrings(with: categories?.count ?? 0)
+        
     }
     
     func getNumberOfCategories() -> Int {
@@ -37,30 +40,30 @@ class ScreenRecodeModel {
         }
         return numberOfCategories
     }
+//
+//    func createViewController(of category: Category) -> PageViewController {
+//        let categoryVC = PageViewController()
+//        categoryVC.category = category
+//        categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category}
+//        //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
+//        categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData}
+//        //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
+//        return categoryVC
+//    }
     
-    func createViewController(of category: Category) -> PageViewController {
-        let categoryVC = PageViewController()
-        categoryVC.category = category
-        categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category}
-        //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
-        categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData}
-        //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
-        return categoryVC
-    }
-    
-    func getArrayOfViewControllers(with numberOfCategories: Int) -> [UIViewController] {
-        
-        var controllers:[UIViewController] = []
-        
-        for i in 0 ..< numberOfCategories {
-            if let category = categories?[i] {
-                let VC = createViewController(of: category)
-                controllers.append(VC)
-            }
-        }
-        return controllers
-    }
-    
+//    func getArrayOfViewControllers(with numberOfCategories: Int) -> [UIViewController] {
+//
+//        var controllers:[UIViewController] = []
+//
+//        for i in 0 ..< numberOfCategories {
+//            if let category = categories?[i] {
+//                let VC = createViewController(of: category)
+//                controllers.append(VC)
+//            }
+//        }
+//        return controllers
+//    }
+//
     func getArrayOfCategoryStrings(with numberOfCategories: Int) -> [String] {
         var namesOfCategories: [String] = []
 
@@ -72,8 +75,9 @@ class ScreenRecodeModel {
         return namesOfCategories
     }
     
-    func addNewTask(of item:String) {
-        guard let category = currentDisplayCategory else {
+    func addNewTask(of item: String,in Category: String) {
+
+        guard let category = categories?.filter("name == \"" + Category + "\"").first else {
             print("カテゴリを追加してください")  //delegateでtaskviewcontrollerにアラートを出させても良い
             return
         }
@@ -87,11 +91,11 @@ class ScreenRecodeModel {
         } catch {
             print("タスクの追加に失敗しました")
         }
-        doCurrentTableviewReloadData!()
+//        doCurrentTableviewReloadData!()
     }
     
-    func deleteTask() {
-        guard let category = currentDisplayCategory else {
+    func deleteTask(in Category: String) {
+        guard let category = categories?.filter("name == \"" + Category + "\"").first else {
             print("カテゴリがありません")
             return
         }
@@ -104,20 +108,27 @@ class ScreenRecodeModel {
         } catch {
             print("タスクの削除に失敗しました")
         }
-        doCurrentTableviewReloadData!()
     }
     
     func addCategory(with name:String) {
-        do {
-            try realm.write {
-                let newCategory = Category()
-                newCategory.name = name
-                realm.add(newCategory)
+        
+        let result = categoriesString.filter({$0 == name})
+        
+        if result.count == 0 {
+            do {
+                try realm.write {
+                    let newCategory = Category()
+                    newCategory.name = name
+                    realm.add(newCategory)
+                }
+            } catch {
+                //アラートで表示するか
+                print("カテゴリの追加に失敗しました")
             }
-        } catch {
-            //アラートで表示するか
-            print("カテゴリの追加に失敗しました")
+        } else {
+            print("カテゴリ名が重複しています")
         }
+        
     }
     
     func deleteCategory(for indexPath: IndexPath) {

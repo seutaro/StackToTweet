@@ -20,6 +20,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     @IBOutlet weak var tweetButton: UIButton!
     
     let recodeModel = ScreenRecodeModel()
+    let shownPageManager = ShownPageManager()
     let pagingViewController = PagingViewController()
     
     override func viewDidLoad() {
@@ -27,13 +28,16 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         
         setUpButton()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        recodeModel.loadCategories()
         
         setUpPagingViewController()
+        
+        shownPageManager.RecodeModel = self.recodeModel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recodeModel.updateModel()
+//        recodeModel.updateModel()
+        recodeModel.loadCategories()
+        shownPageManager.updatePageVCs()
         pagingViewController.reloadData()
         defaultMessageWillShow()
     }
@@ -45,6 +49,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
             
             let addCategoryVC = segue.destination as? AddCategoryViewController
             addCategoryVC?.recodeModel = self.recodeModel
+            addCategoryVC?.shownPageManager = self.shownPageManager
             
         } else if segue.identifier == "toTweetView" {
             
@@ -55,7 +60,8 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     }
     
     func defaultMessageWillShow() {
-        let NumberOfCategories = recodeModel.CategoriesString.count
+//        let NumberOfCategories = recodeModel.CategoriesString.count
+        let NumberOfCategories = shownPageManager.CategoryString.count
         
         if NumberOfCategories == 0 {
             defaultMessage.isHidden = false
@@ -96,19 +102,23 @@ extension TaskViewController {
     
     //以下paigingviewcontrollerのdatasource
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        let numberOfCategories = recodeModel.CategoriesString.count
+//        let numberOfCategories = recodeModel.CategoriesString.count
+        let numberOfCategories = shownPageManager.CategoryString.count
         return numberOfCategories
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let controllers = recodeModel.PagingVCs
+//        let controllers = recodeModel.PagingVCs
+        let controllers = shownPageManager.pageVCs
         return controllers[index]
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        let nameOfCategories = recodeModel.CategoriesString
+//        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = shownPageManager.CategoryString
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
+    
 }
 
 
@@ -193,10 +203,13 @@ extension TaskViewController {
             if item == "" {
                 print("1文字以上入力してください")
             } else {
-                self.recodeModel.addNewTask(of: item)
+                if let pageIndex = self.shownPageManager.IndexOfCurrentShownPageViewController {
+                    let categoryName = self.shownPageManager.CategoryString[pageIndex]
+                    self.recodeModel.addNewTask(of: item, in: categoryName)
+                    self.shownPageManager.tableViewReloadDataOnTheShownPage()
+                }
             }
-            
-            }
+        }
         
         alert.addTextField { (alertTextfield) in
             alertTextfield.placeholder = "新しいタスクを記入"
@@ -208,6 +221,11 @@ extension TaskViewController {
     
     //描画されているチェックした項目を削除
     @objc func deleteButtonTapped(_ sender:UIButton) {
-        recodeModel.deleteTask()
+        
+        if let pageIndex = shownPageManager.IndexOfCurrentShownPageViewController {
+            let categoryName = shownPageManager.CategoryString[pageIndex]
+            recodeModel.deleteTask(in: categoryName)//引数としてpageIndexを渡す
+            shownPageManager.tableViewReloadDataOnTheShownPage()
+        }
     }
 }

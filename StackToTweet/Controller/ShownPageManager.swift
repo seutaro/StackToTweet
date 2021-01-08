@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import RealmSwift
 
 class ShownPageManager {
@@ -23,11 +22,13 @@ class ShownPageManager {
         pageVCs[Index].tableView.reloadData()
     }
     
+    
     func updatePageVCs() {
         let numberOfCategories = getNumberOfCategories()
         CategoryString = getArrayOfCategoryStrings(with: numberOfCategories)
         pageVCs = getArrayOfPageViewControllers(with: numberOfCategories)
     }
+    
     
     func getNumberOfCategories() -> Int {
         guard let numberOfCategories = RecodeModel.categories?.count else {
@@ -35,6 +36,7 @@ class ShownPageManager {
         }
         return numberOfCategories
     }
+    
     
     func createPageViewController(of category: Category) -> PageViewController {
         let PageVC = PageViewController()
@@ -44,6 +46,7 @@ class ShownPageManager {
         return PageVC
     }
     
+    
     func getArrayOfPageViewControllers(with numberOfCategories: Int) -> [PageViewController] {
         var controllers: [PageViewController] = []
         
@@ -51,7 +54,8 @@ class ShownPageManager {
             if let category = RecodeModel.categories?[i] {
                 let pageVC = createPageViewController(of: category)
                 pageVC.pageIndex = i
-                pageVC.setPageIndexToShownPageManager = {[unowned self,unowned pageVC] in self.IndexOfCurrentShownPageViewController = pageVC.pageIndex} 
+                pageVC.setPageIndexToShownPageManager = {[unowned self,unowned pageVC] in self.IndexOfCurrentShownPageViewController = pageVC.pageIndex}
+                //PageViewControllerからShownPageManagerへの参照を回避することを目的としてこのような表現になっているが、もしかしたらうまく動かないかもしれない
                 
                 controllers.append(pageVC)
             }
