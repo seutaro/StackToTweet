@@ -40,6 +40,7 @@ class DataManager {
         return namesOfCategories
     }
     
+    //Itemを追加する関数
     func addNewTask(of item: String,in Category: String) {
 
         guard let category = categories?.filter("name == \"" + Category + "\"").first else {
@@ -58,6 +59,7 @@ class DataManager {
         }
     }
     
+    //Itemを削除する関数
     func deleteTask(in Category: String) {
         guard let category = categories?.filter("name == \"" + Category + "\"").first else {
             print("カテゴリがありません")
@@ -74,6 +76,7 @@ class DataManager {
         }
     }
     
+    //Categoryを追加する関数
     func addCategory(with name:String) {
         
         let result = categoriesString.filter({$0 == name})
@@ -94,6 +97,7 @@ class DataManager {
         
     }
     
+    //Categoryを削除する関数
     func deleteCategory(for indexPath: IndexPath) {
         do {
             try realm.write() {
@@ -163,6 +167,7 @@ class DataManager {
         return tweet
     }
     
+    //ツイートするテキストを生成する関数
     func getTweetText() -> String {
         let tweetCategories = CategoriesWtihTweetItems
         
