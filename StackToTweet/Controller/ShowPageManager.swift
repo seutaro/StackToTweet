@@ -8,17 +8,17 @@
 import Foundation
 import RealmSwift
 
-class ShownPageManager {
-    var RecodeModel: DataManager!
+class ShowPageManager {
+    var realmDataManager: RealmDataManager!
     
-    var IndexOfCurrentShownPageViewController: Int? //現在表示されているpageのインデックスを保持
+    var indexOfCurrentShownPageViewController: Int? //現在表示されているpageのインデックスを保持
     var pageVCs: [PageViewController] = []  //カテゴリごとのpageViewControllerを配列として保持
     var CategoryString: [String] = []   //上タブの項目（カテゴリ名）を配列として保持
     
     
     //現在表示されているpageViewControllerのtableview.reloadDataを実行する関数
     func tableViewReloadDataOnTheShownPage() {
-        guard let Index = IndexOfCurrentShownPageViewController else {
+        guard let Index = indexOfCurrentShownPageViewController else {
             return
         }
         pageVCs[Index].tableView.reloadData()
@@ -34,7 +34,7 @@ class ShownPageManager {
     //以下pageVCs,CategoryString更新のための関数
     
     func getNumberOfCategories() -> Int {
-        guard let numberOfCategories = RecodeModel.categories?.count else {
+        guard let numberOfCategories = realmDataManager.categories?.count else {
             return 0
         }
         return numberOfCategories
@@ -54,10 +54,10 @@ class ShownPageManager {
         var controllers: [PageViewController] = []
         
         for i in 0 ..< numberOfCategories {
-            if let category = RecodeModel.categories?[i] {
+            if let category = realmDataManager.categories?[i] {
                 let pageVC = createPageViewController(of: category)
                 pageVC.pageIndex = i
-                pageVC.setPageIndexToShownPageManager = {[unowned self,unowned pageVC] in self.IndexOfCurrentShownPageViewController = pageVC.pageIndex}
+                pageVC.setPageIndexToShownPageManager = {[unowned self,unowned pageVC] in self.indexOfCurrentShownPageViewController = pageVC.pageIndex}
                 //PageViewControllerからShownPageManagerへの参照を回避することを目的としてこのような表現になっているが、もしかしたらうまく動かないかもしれない
                 
                 controllers.append(pageVC)
@@ -71,7 +71,7 @@ class ShownPageManager {
         var namesOfCategories: [String] = []
 
         for i in 0 ..< numberOfCategories {
-            if let category = RecodeModel.categories?[i].name {
+            if let category = realmDataManager.categories?[i].name {
                 namesOfCategories.append(category)
             }
         }

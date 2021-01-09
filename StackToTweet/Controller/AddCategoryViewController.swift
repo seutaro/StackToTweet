@@ -9,8 +9,8 @@ import UIKit
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
-    weak var recodeModel: DataManager!
-    weak var shownPageManager: ShownPageManager!
+    weak var realmDataManager: RealmDataManager!
+    weak var showPageManager: ShowPageManager!
     
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var categoryAddButton: UIButton!
@@ -28,19 +28,19 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        shownPageManager.updatePageVCs()
-        recodeModel.loadCategories()
+        showPageManager.updatePageVCs()
+        realmDataManager.loadCategories()
     }
     
     //MARK: - TableView DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let nameOfCategories = shownPageManager.CategoryString
+        let nameOfCategories = showPageManager.CategoryString
         return nameOfCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nameOfCategories = shownPageManager.CategoryString
+        let nameOfCategories = showPageManager.CategoryString
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
         cell.textLabel?.text = nameOfCategories[indexPath.row]
@@ -71,8 +71,8 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         
         if categoryTextfield.text != "" {
             let name = categoryTextfield.text!
-            recodeModel.addCategory(with: name)
-            shownPageManager.updatePageVCs()
+            realmDataManager.addCategory(with: name)
+            showPageManager.updatePageVCs()
             categoryTableView.reloadData()
             categoryTextfield.resignFirstResponder()
             categoryTextfield.text = ""
@@ -84,8 +84,8 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     func deleteCategory(indexPath: IndexPath) {
         
-        recodeModel.deleteCategory(for: indexPath)
-        shownPageManager.updatePageVCs()
+        realmDataManager.deleteCategory(for: indexPath)
+        showPageManager.updatePageVCs()
         categoryTableView.reloadData()
     }
 }
