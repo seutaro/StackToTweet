@@ -81,18 +81,19 @@ class RealmDataManager {
         
         let result = categoriesString.filter({$0 == name})
         
-        if result.count == 0 {
-            do {
-                try realm.write {
-                    let newCategory = Category()
-                    newCategory.name = name
-                    realm.add(newCategory)
-                }
-            } catch {
-                print("カテゴリの追加に失敗しました")
-            }
-        } else {
+        guard result.count == 0  else {
             print("カテゴリ名が重複しています")
+            return
+        }
+        
+        do {
+            try realm.write {
+                let newCategory = Category()
+                newCategory.name = name
+                realm.add(newCategory)
+            }
+        } catch {
+            print("カテゴリの追加に失敗しました")
         }
         
     }
