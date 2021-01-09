@@ -19,18 +19,18 @@
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
-                                <state key="normal" image="addButton"/>
+                                <state key="normal" image="addbutton"/>
                             </button>
                             <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
-                                <state key="normal" image="tweetButton"/>
+                                <state key="normal" image="TweetButton"/>
                                 <connections>
                                     <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
-                                <state key="normal" image="deleteButton"/>
+                                <state key="normal" image="deletebutton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
                                 <rect key="frame" x="309" y="757" width="70" height="70"/>
@@ -41,7 +41,7 @@
                                 <state key="normal" image="menuButton"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
-                                <rect key="frame" x="25" y="437.66666666666663" width="364" height="20"/>
+                                <rect key="frame" x="25" y="438" width="364" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -135,12 +135,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addButton" width="70" height="70"/>
+        <image name="TweetButton" width="70" height="70"/>
+        <image name="addbutton" width="70" height="70"/>
         <image name="closeButton" width="70" height="70"/>
-        <image name="deleteButton" width="70" height="70"/>
+        <image name="deletebutton" width="70" height="70"/>
         <image name="menuButton" width="70" height="70"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="tweetButton" width="70" height="70"/>
         <namedColor name="Custm medium">
             <color red="0.9179999828338623" green="0.52499997615814209" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

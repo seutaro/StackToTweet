@@ -9,8 +9,8 @@ import UIKit
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
-//    var recodeModel: ScreenRecodeModel
-    weak var recodeModel: ScreenRecodeModel!
+    weak var realmDataManager: RealmDataManager!
+    weak var showPageManager: ShowPageManager!
     
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var categoryAddButton: UIButton!
@@ -25,22 +25,22 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
         categoryTextfield.delegate = self
-        recodeModel.loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recodeModel.updateModel()
+        showPageManager.updatePageVCs()
+        realmDataManager.loadCategories()
     }
     
     //MARK: - TableView DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = showPageManager.CategoryString
         return nameOfCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = showPageManager.CategoryString
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
         cell.textLabel?.text = nameOfCategories[indexPath.row]
@@ -71,8 +71,8 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
         
         if categoryTextfield.text != "" {
             let name = categoryTextfield.text!
-            recodeModel.addCategory(with: name)
-            recodeModel.updateModel()
+            realmDataManager.addCategory(with: name)
+            showPageManager.updatePageVCs()
             categoryTableView.reloadData()
             categoryTextfield.resignFirstResponder()
             categoryTextfield.text = ""
@@ -84,8 +84,8 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     func deleteCategory(indexPath: IndexPath) {
         
-        recodeModel.deleteCategory(for: indexPath)
-        recodeModel.updateModel()
+        realmDataManager.deleteCategory(for: indexPath)
+        showPageManager.updatePageVCs()
         categoryTableView.reloadData()
     }
 }

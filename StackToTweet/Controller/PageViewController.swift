@@ -12,14 +12,14 @@ class PageViewController: UITableViewController {
     
     let realm = try! Realm()
     var Items: Results<Item>?
-    var setCurrentDisplayCategory: ((_ category: Category) -> Void)? // currentDisplayCategory = category taskviewcontroller内 RecodeModel.category = currentCategory
-    var passFuncOfCurrentTableViewReloadData: (() -> Void)?
-    var tableViewReloadData: (() -> Void) { tableView.reloadData}
+    var pageIndex: Int!
     var category: Category? {
         didSet {
             loadItems()
         }
     }
+    
+    var setPageIndexToShownPageManager:(() -> Void)?
     
     
     func loadItems() {
@@ -34,9 +34,8 @@ class PageViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setCurrentDisplayCategory!(category!)
-        passFuncOfCurrentTableViewReloadData!()
-        tableView.reloadData() //もしかするといらないかもしれない
+        setPageIndexToShownPageManager!()
+        tableView.reloadData()
     }
     
     

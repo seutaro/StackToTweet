@@ -19,7 +19,8 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var tweetButton: UIButton!
     
-    let recodeModel = ScreenRecodeModel()
+    let realmDataManager = RealmDataManager()
+    let showPageManager = ShowPageManager()
     let pagingViewController = PagingViewController()
     
     override func viewDidLoad() {
@@ -27,13 +28,15 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         
         setUpButton()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        recodeModel.loadCategories()
         
         setUpPagingViewController()
+        
+        showPageManager.realmDataManager = self.realmDataManager
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recodeModel.updateModel()
+        realmDataManager.loadCategories()
+        showPageManager.updatePageVCs()
         pagingViewController.reloadData()
         defaultMessageWillShow()
     }
@@ -44,18 +47,19 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
         if segue.identifier == "toAddCategory" {
             
             let addCategoryVC = segue.destination as? AddCategoryViewController
-            addCategoryVC?.recodeModel = self.recodeModel
+            addCategoryVC?.realmDataManager = self.realmDataManager
+            addCategoryVC?.showPageManager = self.showPageManager
             
         } else if segue.identifier == "toTweetView" {
             
             let tweetVC = segue.destination as? TweetViewController
-            tweetVC?.recedeModel = self.recodeModel
+            tweetVC?.realmDataManager = self.realmDataManager
             
         }
     }
     
     func defaultMessageWillShow() {
-        let NumberOfCategories = recodeModel.CategoriesString.count
+        let NumberOfCategories = showPageManager.CategoryString.count
         
         if NumberOfCategories == 0 {
             defaultMessage.isHidden = false
@@ -96,19 +100,20 @@ extension TaskViewController {
     
     //以下paigingviewcontrollerのdatasource
     func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-        let numberOfCategories = recodeModel.CategoriesString.count
+        let numberOfCategories = showPageManager.CategoryString.count
         return numberOfCategories
     }
     
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-        let controllers = recodeModel.PagingVCs
+        let controllers = showPageManager.pageVCs
         return controllers[index]
     }
     
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = showPageManager.CategoryString
         return PagingIndexItem(index: index, title: nameOfCategories[index])
     }
+    
 }
 
 
@@ -193,10 +198,13 @@ extension TaskViewController {
             if item == "" {
                 print("1文字以上入力してください")
             } else {
-                self.recodeModel.addNewTask(of: item)
+                if let pageIndex = self.showPageManager.indexOfCurrentShownPageViewController {
+                    let categoryName = self.showPageManager.CategoryString[pageIndex]
+                    self.realmDataManager.addNewTask(of: item, in: categoryName)
+                    self.showPageManager.tableViewReloadDataOnTheShownPage()
+                }
             }
-            
-            }
+        }
         
         alert.addTextField { (alertTextfield) in
             alertTextfield.placeholder = "新しいタスクを記入"
@@ -208,6 +216,11 @@ extension TaskViewController {
     
     //描画されているチェックした項目を削除
     @objc func deleteButtonTapped(_ sender:UIButton) {
-        recodeModel.deleteTask()
+        
+        if let pageIndex = showPageManager.indexOfCurrentShownPageViewController {
+            let categoryName = showPageManager.CategoryString[pageIndex]
+            realmDataManager.deleteTask(in: categoryName)
+            showPageManager.tableViewReloadDataOnTheShownPage()
+        }
     }
 }
