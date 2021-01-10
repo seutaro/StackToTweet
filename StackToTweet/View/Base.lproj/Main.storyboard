@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FEI-8Z-PLZ">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,34 +15,34 @@
             <objects>
                 <viewController title="Home View Controller" id="BYZ-38-t0r" customClass="TaskViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
                                 <state key="normal" image="addbutton"/>
                             </button>
                             <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
                                 <state key="normal" image="TweetButton"/>
                                 <connections>
                                     <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
                                 <state key="normal" image="deletebutton"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
                                 <state key="normal" image="closeButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="menuButton">
-                                <rect key="frame" x="309" y="757" width="70" height="70"/>
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
                                 <state key="normal" image="menuButton"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
-                                <rect key="frame" x="25" y="438" width="364" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
+                                <rect key="frame" x="5.5" y="323.5" width="364" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,7 +54,6 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
-                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J8y-7g-rmc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="35" id="VtB-XU-3Uw"/>
                             <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="35" id="abO-Iz-a24"/>
@@ -61,6 +61,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKN-P9-ZGu" secondAttribute="bottom" constant="35" id="fOW-N7-tfx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qcS-jU-Y7t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
                             <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vNJ-Mo-jHZ"/>
                         </constraints>
@@ -87,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1051.875" y="118.30985915492958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Cm-E0-uQ0">
@@ -95,7 +96,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FEI-8Z-PLZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="khp-2u-Ht2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <color key="barTintColor" name="Custm medium"/>
