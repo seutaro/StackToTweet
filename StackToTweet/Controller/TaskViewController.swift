@@ -60,6 +60,7 @@ class TaskViewController: UIViewController, PagingViewControllerDataSource {
     
     func defaultMessageWillShow() {
         let NumberOfCategories = showPageManager.CategoryString.count
+        defaultMessage.adjustsFontSizeToFitWidth = true
         
         if NumberOfCategories == 0 {
             defaultMessage.isHidden = false
