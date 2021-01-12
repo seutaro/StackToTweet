@@ -9,8 +9,8 @@ import UIKit
 
 class AddCategoryViewController: UIViewController, UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
-//    var recodeModel: ScreenRecodeModel
-    weak var recodeModel: ScreenRecodeModel!
+    weak var realmDataManager: RealmDataManager!
+    weak var showPageManager: ShowPageManager!
     
     @IBOutlet weak var categoryTextfield: UITextField!
     @IBOutlet weak var categoryAddButton: UIButton!
@@ -20,26 +20,27 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryAddButton.layer.cornerRadius = 15.0
         
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
         categoryTextfield.delegate = self
-        recodeModel.loadCategories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recodeModel.updateModel()
+        showPageManager.updatePageVCs()
+        realmDataManager.loadCategories()
     }
     
     //MARK: - TableView DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = showPageManager.CategoryString
         return nameOfCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nameOfCategories = recodeModel.CategoriesString
+        let nameOfCategories = showPageManager.CategoryString
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
         cell.textLabel?.text = nameOfCategories[indexPath.row]
@@ -65,14 +66,13 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     
     //MARK: - ButtonAction
-    //textfieldのデリゲートメソッドについて調べて実装
     
     @IBAction func categoryAddButtonPressed(_ sender: Any) {
         
         if categoryTextfield.text != "" {
             let name = categoryTextfield.text!
-            recodeModel.addCategory(with: name)
-            recodeModel.updateModel()
+            realmDataManager.addCategory(with: name)
+            showPageManager.updatePageVCs()
             categoryTableView.reloadData()
             categoryTextfield.resignFirstResponder()
             categoryTextfield.text = ""
@@ -84,40 +84,9 @@ class AddCategoryViewController: UIViewController, UITableViewDataSource,UITable
     
     func deleteCategory(indexPath: IndexPath) {
         
-        recodeModel.deleteCategory(for: indexPath)
-        recodeModel.updateModel()
+        realmDataManager.deleteCategory(for: indexPath)
+        showPageManager.updatePageVCs()
         categoryTableView.reloadData()
-    }
-    
-    //MARK: - TextFieldDelegate
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        return true
-//    }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if self.categoryTextfield.isFirstResponder {
-//            self.categoryTextfield.resignFirstResponder()
-//        }
-//    }
-    
-    func getFirstResponder(view:UIView) -> UIView? {
-        if view.isFirstResponder {
-            return view
-        }
-        
-        for subView in view.subviews {
-            if let _ = getFirstResponder(view: subView) {
-                return subView
-            }
-        }
-        
-        return nil
     }
 }
 

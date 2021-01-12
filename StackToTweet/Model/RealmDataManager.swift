@@ -8,26 +8,17 @@
 import Foundation
 import RealmSwift
 
-class ScreenRecodeModel {
+class RealmDataManager {
     
     
     let realm = try! Realm()
     var categories: Results<Category>?
-    var currentDisplayCategory: Category?               //現在描画されているtableview内に表示されているカテゴリ
-    
-    var doCurrentTableviewReloadData: (() -> Void)?     //現在表示されているtableviewのtableview.reloadDataを保持する
-    var PagingVCs: [UIViewController] = []              //カテゴリごとのtableViewをスタックする
-    var CategoriesString: [String] = []                 //各カテゴリ名をStringとしてスタック
-    
-    
-    func updateModel() {
-        let numberOfCategories = getNumberOfCategories()
-        CategoriesString = getArrayOfCategoryStrings(with: numberOfCategories)
-        PagingVCs = getArrayOfViewControllers(with: numberOfCategories)
-    }
+    var categoriesString: [String] = []
     
     func loadCategories() {
         categories = realm.objects(Category.self)
+        categoriesString = getArrayOfCategoryStrings(with: categories?.count ?? 0)
+        
     }
     
     func getNumberOfCategories() -> Int {
@@ -36,28 +27,6 @@ class ScreenRecodeModel {
             return 0
         }
         return numberOfCategories
-    }
-    
-    func createViewController(of category: Category) -> ReusableTableViewController {
-        let categoryVC = ReusableTableViewController()
-        categoryVC.category = category
-        categoryVC.setCurrentDisplayCategory = {category in self.currentDisplayCategory = category} //”ScreenRecodeModel.currentDisplayCategoryにcategoryVCのcategoryを代入する処理”をcategoryVCのプロパティに代入
-        categoryVC.passFuncOfCurrentTableViewReloadData = {self.doCurrentTableviewReloadData = categoryVC.tableViewReloadData} //categoryVCのプロパティに"categoryVCのtableView.reloadDataをScreenRecodeModelのプロパティに代入する処理"を代入する
-        
-        return categoryVC
-    }
-    
-    func getArrayOfViewControllers(with numberOfCategories: Int) -> [UIViewController] {
-        
-        var controllers:[UIViewController] = []
-        
-        for i in 0 ..< numberOfCategories {
-            if let category = categories?[i] {
-                let VC = createViewController(of: category)
-                controllers.append(VC)
-            }
-        }
-        return controllers
     }
     
     func getArrayOfCategoryStrings(with numberOfCategories: Int) -> [String] {
@@ -71,9 +40,11 @@ class ScreenRecodeModel {
         return namesOfCategories
     }
     
-    func addNewTask(of item:String) {
-        guard let category = currentDisplayCategory else {
-            print("カテゴリを追加してください")  //delegateでtaskviewcontrollerにアラートを出させても良い
+    //Itemを追加する関数
+    func addNewTask(of item: String,in Category: String) {
+
+        guard let category = categories?.filter("name == \"" + Category + "\"").first else {
+            print("カテゴリを追加してください")
             return
         }
         
@@ -86,11 +57,11 @@ class ScreenRecodeModel {
         } catch {
             print("タスクの追加に失敗しました")
         }
-        doCurrentTableviewReloadData!()
     }
     
-    func deleteTask() {
-        guard let category = currentDisplayCategory else {
+    //Itemを削除する関数
+    func deleteTask(in Category: String) {
+        guard let category = categories?.filter("name == \"" + Category + "\"").first else {
             print("カテゴリがありません")
             return
         }
@@ -103,10 +74,18 @@ class ScreenRecodeModel {
         } catch {
             print("タスクの削除に失敗しました")
         }
-        doCurrentTableviewReloadData!()
     }
     
+    //Categoryを追加する関数
     func addCategory(with name:String) {
+        
+        let result = categoriesString.filter({$0 == name})
+        
+        guard result.count == 0  else {
+            print("カテゴリ名が重複しています")
+            return
+        }
+        
         do {
             try realm.write {
                 let newCategory = Category()
@@ -114,11 +93,12 @@ class ScreenRecodeModel {
                 realm.add(newCategory)
             }
         } catch {
-            //アラートで表示するか
             print("カテゴリの追加に失敗しました")
         }
+        
     }
     
+    //Categoryを削除する関数
     func deleteCategory(for indexPath: IndexPath) {
         do {
             try realm.write() {
@@ -164,7 +144,7 @@ class ScreenRecodeModel {
         CategoriesWtihTweetItems = getTweetCategories()
     }
     
-    func getTweetItemText(of category: Category) -> String {
+    func createTweetItemText(of category: Category) -> String {
         let tweetableItems = getTweetableItemList(from: category)
         var tweet = ""
         
@@ -174,10 +154,10 @@ class ScreenRecodeModel {
         return tweet
     }
     
-    func getTweetCategoryText(with category: Category) -> String {
+    func createTweetCategoryText(with category: Category) -> String {
         
         var tweet = "【#\(category.name)】\n"
-        let itemsText = getTweetItemText(of: category)
+        let itemsText = createTweetItemText(of: category)
         
         if itemsText != "" {
             tweet = tweet + "\(itemsText)\n"
@@ -188,6 +168,7 @@ class ScreenRecodeModel {
         return tweet
     }
     
+    //ツイートするテキストを生成する関数
     func getTweetText() -> String {
         let tweetCategories = CategoriesWtihTweetItems
         
@@ -196,7 +177,7 @@ class ScreenRecodeModel {
                     """
         
         for category in tweetCategories {
-            let textByCategory = getTweetCategoryText(with: category)
+            let textByCategory = createTweetCategoryText(with: category)
             tweet = tweet + "\(textByCategory)"
         }
         return tweet

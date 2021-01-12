@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FEI-8Z-PLZ">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,56 +15,61 @@
             <objects>
                 <viewController title="Home View Controller" id="BYZ-38-t0r" customClass="TaskViewController" customModule="StackToTweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXr-92-8dp">
-                                <rect key="frame" x="299" y="769" width="85" height="63"/>
-                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <state key="normal" title="追加">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sws-uZ-g8d" userLabel="addButton">
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
+                                <state key="normal" image="addbutton"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-Xc-ve2" userLabel="tweetButton">
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
+                                <state key="normal" image="TweetButton"/>
                                 <connections>
-                                    <action selector="AddButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tNr-mo-tsh"/>
+                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="GCP-G7-Jek"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siG-gc-ifg">
-                                <rect key="frame" x="30" y="769" width="85" height="63"/>
-                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
-                                <state key="normal" title="削除">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="DeleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8dm-YH-8wF"/>
-                                </connections>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKN-P9-ZGu" userLabel="deleteButton">
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
+                                <state key="normal" image="deletebutton"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYg-0a-s24">
-                                <rect key="frame" x="142" y="702" width="130" height="130"/>
-                                <color key="tintColor" systemColor="linkColor"/>
-                                <state key="normal" title="TweetButton" image="TweetButton"/>
-                                <connections>
-                                    <segue destination="Uyi-Kv-Ec3" kind="show" identifier="toTweetView" id="yrv-8O-Yi1"/>
-                                </connections>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74d-zc-Wwq" userLabel="closeButton">
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
+                                <state key="normal" image="closeButton"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-qk-gef" userLabel="menuButton">
+                                <rect key="frame" x="270" y="562" width="70" height="70"/>
+                                <state key="normal" image="menuButton"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="右上のボタンからカテゴリを追加してください" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-nG-j0g">
+                                <rect key="frame" x="5.5" y="323.5" width="364" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xYg-0a-s24" firstAttribute="leading" secondItem="siG-gc-ifg" secondAttribute="trailing" constant="27" id="8Gc-tM-lDP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xYg-0a-s24" secondAttribute="bottom" constant="30" id="MPK-Fx-kwk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gXr-92-8dp" secondAttribute="trailing" constant="30" id="dtN-4K-3lh"/>
-                            <constraint firstItem="gXr-92-8dp" firstAttribute="leading" secondItem="xYg-0a-s24" secondAttribute="trailing" constant="27" id="keU-rp-oXI"/>
-                            <constraint firstItem="xYg-0a-s24" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="614" id="qDJ-m8-v6w"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gXr-92-8dp" secondAttribute="bottom" constant="30" id="sCM-7g-sIh"/>
-                            <constraint firstItem="siG-gc-ifg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xtd-9u-eUZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="siG-gc-ifg" secondAttribute="bottom" constant="30" id="yc3-L0-ax7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sws-uZ-g8d" secondAttribute="bottom" constant="35" id="Fha-HL-eYN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xwW-qk-gef" secondAttribute="trailing" constant="35" id="IuJ-s0-Y3d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xwW-qk-gef" secondAttribute="bottom" constant="35" id="Pvw-po-r1S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iGe-Xc-ve2" secondAttribute="bottom" constant="35" id="VtB-XU-3Uw"/>
+                            <constraint firstAttribute="trailing" secondItem="iGe-Xc-ve2" secondAttribute="trailing" constant="35" id="abO-Iz-a24"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sws-uZ-g8d" secondAttribute="trailing" constant="35" id="eAU-yx-m8d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eKN-P9-ZGu" secondAttribute="bottom" constant="35" id="fOW-N7-tfx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eKN-P9-ZGu" secondAttribute="trailing" constant="35" id="iLR-bL-k3q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="74d-zc-Wwq" secondAttribute="trailing" constant="35" id="igl-WF-SYz"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qcS-jU-Y7t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="74d-zc-Wwq" secondAttribute="bottom" constant="35" id="uVF-YL-CvO"/>
+                            <constraint firstItem="ZOm-nG-j0g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vNJ-Mo-jHZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="タスク管理画面" id="9D2-l9-geN">
-                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l"/>
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="E4x-xz-X1l">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="qs4-NY-850">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -71,13 +78,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddButton" destination="gXr-92-8dp" id="6aC-kZ-c6j"/>
-                        <outlet property="DeleteButton" destination="siG-gc-ifg" id="bAz-nv-CaF"/>
+                        <outlet property="addButton" destination="sws-uZ-g8d" id="PDq-eu-CXg"/>
+                        <outlet property="closeButton" destination="74d-zc-Wwq" id="0uk-Ma-biW"/>
+                        <outlet property="defaultMessage" destination="ZOm-nG-j0g" id="SoK-ZI-Lca"/>
+                        <outlet property="deleteButton" destination="eKN-P9-ZGu" id="Lop-Qs-HUe"/>
+                        <outlet property="menuButton" destination="xwW-qk-gef" id="1ix-5p-Zrt"/>
+                        <outlet property="tweetButton" destination="iGe-Xc-ve2" id="Gaq-6A-i85"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1051.875" y="118.30985915492958"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Cm-E0-uQ0">
@@ -85,10 +96,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FEI-8Z-PLZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="khp-2u-Ht2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                        <color key="barTintColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="Custm medium"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,7 +122,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-RT-9Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="119"/>
+            <point key="canvasLocation" x="1800" y="119"/>
         </scene>
         <!--TweetView-->
         <scene sceneID="QIw-VB-07W">
@@ -125,11 +136,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TweetButton" width="400" height="400"/>
+        <image name="TweetButton" width="70" height="70"/>
+        <image name="addbutton" width="70" height="70"/>
+        <image name="closeButton" width="70" height="70"/>
+        <image name="deletebutton" width="70" height="70"/>
+        <image name="menuButton" width="70" height="70"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="Custm medium">
+            <color red="0.9179999828338623" green="0.52499997615814209" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

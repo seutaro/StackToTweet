@@ -8,18 +8,18 @@
 import UIKit
 import RealmSwift
 
-class ReusableTableViewController: UITableViewController {
+class PageViewController: UITableViewController {
     
     let realm = try! Realm()
     var Items: Results<Item>?
-    var setCurrentDisplayCategory: ((_ category: Category) -> Void)? // currentDisplayCategory = category taskviewcontroller内 RecodeModel.category = currentCategory
-    var passFuncOfCurrentTableViewReloadData: (() -> Void)?
-    var tableViewReloadData: (() -> Void) { tableView.reloadData} //こいつをScreenRecodeModelのプロパティに代入　そのためのcomplihentionが必要　taskviewcontroller内でcomplihention(recode) = complihention(tableview) となる
+    var pageIndex: Int!
     var category: Category? {
         didSet {
             loadItems()
         }
     }
+    
+    var setPageIndexToShownPageManager:(() -> Void)?
     
     
     func loadItems() {
@@ -34,9 +34,8 @@ class ReusableTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setCurrentDisplayCategory!(category!)
-        passFuncOfCurrentTableViewReloadData!()
-        tableView.reloadData() //もしかするといらないかもしれない
+        setPageIndexToShownPageManager!()
+        tableView.reloadData()
     }
     
     
@@ -106,25 +105,5 @@ class ReusableTableViewController: UITableViewController {
         
         return cell
     }
-    
-    //MARK: - AddButtonDelegate
-    
-
-//
-//    func deleteTaskItem() {
-//        if let currentCategory = category {
-//            do {
-//                try self.realm.write {
-//                    let deletedItems = currentCategory.items.filter("done == true")
-//                    self.realm.delete(deletedItems)
-//                }
-//            } catch {
-//                print("タスクの削除に失敗しました")
-//            }
-//        }
-//        tableView.reloadData()
-//    }
-//
-//
 
 }

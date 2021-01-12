@@ -15,27 +15,28 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var tweetButton: UIButton!
     @IBOutlet weak var tweetTableView: UITableView!
     
-    var recedeModel: ScreenRecodeModel!
+    var realmDataManager: RealmDataManager!
     let realm = try! Realm()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tweetButton.layer.cornerRadius = 15
         tweetTableView.dataSource = self
         tweetTableView.delegate = self
         tweetTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        recedeModel.updateCategoriesWithTweetItems()
+        realmDataManager.updateCategoriesWithTweetItems()
     }
     
     
     
     @IBAction func pressedTweetButton(_ sender: Any) {
         
-        let tweet = recedeModel.getTweetText()
+        let tweet = realmDataManager.getTweetText()
         let encodedText = tweet.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         if let encodedText = encodedText,
             let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
@@ -50,7 +51,7 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
         } catch {
             print("ツイート済みのタスクの削除に失敗しました。")
         }
-        recedeModel.updateCategoriesWithTweetItems()
+        realmDataManager.updateCategoriesWithTweetItems()
         tweetTableView.reloadData()
     }
     
@@ -59,20 +60,20 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     //MARK: - tableviewDatasource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        let numberOfSection = recedeModel.CategoriesWtihTweetItems.count
+        let numberOfSection = realmDataManager.CategoriesWtihTweetItems.count
         return numberOfSection
     }
      
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let category = recedeModel.CategoriesWtihTweetItems[section]
+        let category = realmDataManager.CategoriesWtihTweetItems[section]
         let titleForSection = category.name
         return titleForSection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let category = recedeModel.CategoriesWtihTweetItems[section]
-        let doneItems = recedeModel.getDoneItemList(from: category)
+        let category = realmDataManager.CategoriesWtihTweetItems[section]
+        let doneItems = realmDataManager.getDoneItemList(from: category)
         let numberOfRows = doneItems.count
         return numberOfRows
     }
@@ -80,9 +81,9 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath)
         
-        let tweetableCategories = recedeModel.CategoriesWtihTweetItems
+        let tweetableCategories = realmDataManager.CategoriesWtihTweetItems
         let categoryWithTweetItems = tweetableCategories[indexPath.section]
-        let doneItems = recedeModel.getDoneItemList(from: categoryWithTweetItems)
+        let doneItems = realmDataManager.getDoneItemList(from: categoryWithTweetItems)
         let tweetItem = doneItems[indexPath.row]
         cell.textLabel?.text = tweetItem.title
         cell.accessoryType = tweetItem.tweet ? .checkmark : .none
@@ -93,9 +94,9 @@ class TweetViewController: UIViewController,UITableViewDataSource,UITableViewDel
     //MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categories = recedeModel.CategoriesWtihTweetItems
+        let categories = realmDataManager.CategoriesWtihTweetItems
         let category = categories[indexPath.section]
-        let doneItems = recedeModel.getDoneItemList(from: category)
+        let doneItems = realmDataManager.getDoneItemList(from: category)
         let item = doneItems[indexPath.row]
         do {
             try realm.write {
